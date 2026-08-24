@@ -1,0 +1,838 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Esquema QE1</title>
+<style>
+  @page { size: 420mm 297mm; margin: 0; }
+  body { margin:0; padding:0; background:#888; font-family:Arial, sans-serif; }
+  .sheet { width:420mm; height:297mm; background:#fff; page-break-after: always; margin:0 auto 6mm auto; box-shadow:0 0 4px rgba(0,0,0,.3); }
+  .sheet svg { width:100%; height:100%; display:block; }
+  @media print { body { background:#fff; } .sheet { box-shadow:none; margin:0; } }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+<svg viewBox="0 0 420 297" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="410" height="287" fill="none" stroke="#111" stroke-width="0.7"/>
+<text x="10" y="14" font-size="6" font-family="Arial" font-weight="bold" fill="#111">DIAGRAMA DE BLOCOS GERAL - ALIMENTACAO DO QUADRO QE1</text>
+<text x="10" y="20" font-size="3.2" font-family="Arial" fill="#444">Base: esboco de arquitetura fornecido pelo cliente (entrada 230VAC, 3 fontes DC, cargas 24V / PoE / mini-PC)</text>
+<rect x="185" y="26" width="50" height="10" fill="#dfe9f7" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="210.0" y="30.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">ENTRADA 230V AC</text>
+<text x="210.0" y="33.6" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">L1(L)-N-PE</text>
+<line x1="210" y1="36" x2="210" y2="46" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="46" x2="208.69510339766632" y2="43.29865869294197" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="46" x2="211.30489660233368" y2="43.29865869294197" stroke="#111" stroke-width="0.4"/>
+<rect x="180" y="46" width="60" height="10" fill="#eef3fb" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="210.0" y="50.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-Q1  DISJUNTOR GERAL /</text>
+<text x="210.0" y="53.6" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">SECCIONADOR</text>
+<line x1="210" y1="56" x2="210" y2="66" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="66" x2="208.69510339766632" y2="63.29865869294197" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="66" x2="211.30489660233368" y2="63.29865869294197" stroke="#111" stroke-width="0.4"/>
+<rect x="175" y="66" width="70" height="10" fill="#eef3fb" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="210.0" y="70.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-F0  PROTECAO CONTRA</text>
+<text x="210.0" y="73.60000000000001" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">SOBRETENSOES (DPS)</text>
+<line x1="178" y1="76" x2="90" y2="90" stroke="#111" stroke-width="0.4"/>
+<line x1="90" y1="90" x2="92.4627725822701" y2="88.286888442623" stroke="#111" stroke-width="0.4"/>
+<line x1="90" y1="90" x2="92.87281036881004" y2="90.8642688151597" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="76" x2="210" y2="90" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="90" x2="208.69510339766632" y2="87.29865869294197" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="90" x2="211.30489660233368" y2="87.29865869294197" stroke="#111" stroke-width="0.4"/>
+<line x1="245" y1="76" x2="330" y2="90" stroke="#111" stroke-width="0.4"/>
+<line x1="330" y1="90" x2="327.1225037716214" y2="90.84853724471407" stroke="#111" stroke-width="0.4"/>
+<line x1="330" y1="90" x2="327.54663760317294" y2="88.27343898172265" stroke="#111" stroke-width="0.4"/>
+<rect x="60" y="90" width="80" height="10" fill="#eaf7ea" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="100.0" y="94.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-F1  FONTE 24V DC</text>
+<text x="100.0" y="97.60000000000001" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">(ver folha 3)</text>
+<rect x="170" y="90" width="80" height="10" fill="#fdeeea" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="210.0" y="94.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-F2  FONTE 48/54V DC (PoE)</text>
+<text x="210.0" y="97.60000000000001" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">(ver folha 4)</text>
+<rect x="290" y="90" width="80" height="10" fill="#f6f2e8" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="330.0" y="94.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-F3  FONTE/ADAPTADOR MINI-PC</text>
+<text x="330.0" y="97.60000000000001" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">(ver folha 5)</text>
+<line x1="100" y1="100" x2="100" y2="112" stroke="#111" stroke-width="0.4"/>
+<line x1="100" y1="112" x2="98.69510339766632" y2="109.29865869294197" stroke="#111" stroke-width="0.4"/>
+<line x1="100" y1="112" x2="101.30489660233368" y2="109.29865869294197" stroke="#111" stroke-width="0.4"/>
+<rect x="60" y="112" width="80" height="10" fill="#eaf7ea" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="100.0" y="116.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-X2  FUSIVEIS/DISJUNTORES</text>
+<text x="100.0" y="119.60000000000001" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">DC 24V</text>
+<line x1="210" y1="100" x2="210" y2="112" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="112" x2="208.69510339766632" y2="109.29865869294197" stroke="#111" stroke-width="0.4"/>
+<line x1="210" y1="112" x2="211.30489660233368" y2="109.29865869294197" stroke="#111" stroke-width="0.4"/>
+<rect x="175" y="112" width="70" height="10" fill="#fdeeea" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="210.0" y="118.0" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-SW1  SWITCH PoE</text>
+<line x1="330" y1="100" x2="330" y2="112" stroke="#111" stroke-width="0.4"/>
+<line x1="330" y1="112" x2="328.6951033976663" y2="109.29865869294197" stroke="#111" stroke-width="0.4"/>
+<line x1="330" y1="112" x2="331.3048966023337" y2="109.29865869294197" stroke="#111" stroke-width="0.4"/>
+<rect x="295" y="112" width="70" height="10" fill="#f6f2e8" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="330.0" y="118.0" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-PC1  MINI-PC / GATEWAY</text>
+<line x1="100" y1="122" x2="40.0" y2="140" stroke="#111" stroke-width="0.4"/>
+<line x1="40.0" y1="140" x2="42.21245642969055" y2="137.97391102201286" stroke="#111" stroke-width="0.4"/>
+<line x1="40.0" y1="140" x2="42.96237498881714" y2="140.47363955243483" stroke="#111" stroke-width="0.4"/>
+<rect x="15.0" y="140" width="50" height="12" fill="#f2f8f2" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="40.0" y="147.0" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-A1  PLC</text>
+<line x1="100" y1="122" x2="96.66666666666666" y2="140" stroke="#111" stroke-width="0.4"/>
+<line x1="96.66666666666666" y1="140" x2="95.87547055932868" y2="137.10621204651528" stroke="#111" stroke-width="0.4"/>
+<line x1="96.66666666666666" y1="140" x2="98.44163325420884" y2="137.58142736038198" stroke="#111" stroke-width="0.4"/>
+<rect x="71.66666666666666" y="140" width="50" height="12" fill="#f2f8f2" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="96.66666666666666" y="145.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-K1..K3</text>
+<text x="96.66666666666666" y="148.6" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">RELES (3x)</text>
+<line x1="100" y1="122" x2="153.33333333333331" y2="140" stroke="#111" stroke-width="0.4"/>
+<line x1="153.33333333333331" y1="140" x2="150.35655523572575" y2="140.3725481950083" stroke="#111" stroke-width="0.4"/>
+<line x1="153.33333333333331" y1="140" x2="151.19111136824753" y2="137.8997892838327" stroke="#111" stroke-width="0.4"/>
+<rect x="128.33333333333331" y="140" width="50" height="12" fill="#f2f8f2" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="153.33333333333331" y="145.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-H1..Hn</text>
+<text x="153.33333333333331" y="148.6" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">SEMAFOROS 24V</text>
+<line x1="100" y1="122" x2="210.0" y2="140" stroke="#111" stroke-width="0.4"/>
+<line x1="210.0" y1="140" x2="207.12338904048946" y2="140.8515335504981" stroke="#111" stroke-width="0.4"/>
+<line x1="210.0" y1="140" x2="207.54484080817582" y2="138.27599497019258" stroke="#111" stroke-width="0.4"/>
+<rect x="185.0" y="140" width="50" height="12" fill="#f2f8f2" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="210.0" y="145.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-P1  LEITOR QR</text>
+<text x="210.0" y="148.6" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">(opcao 24V)</text>
+<line x1="210" y1="122" x2="266.66666666666663" y2="140" stroke="#111" stroke-width="0.4"/>
+<line x1="266.66666666666663" y1="140" x2="263.6970459484073" y2="140.42585536240045" stroke="#111" stroke-width="0.4"/>
+<line x1="266.66666666666663" y1="140" x2="264.48713686123614" y2="137.93853211830984" stroke="#111" stroke-width="0.4"/>
+<rect x="241.66666666666663" y="140" width="50" height="12" fill="#fdf2ef" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="266.66666666666663" y="145.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-B1..Bn</text>
+<text x="266.66666666666663" y="148.6" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">CAMERAS PoE</text>
+<line x1="210" y1="122" x2="323.3333333333333" y2="140" stroke="#111" stroke-width="0.4" stroke-dasharray="2,1.5"/>
+<line x1="323.3333333333333" y1="140" x2="320.46074845503995" y2="140.86501798651835" stroke="#111" stroke-width="0.4" stroke-dasharray="2,1.5"/>
+<line x1="323.3333333333333" y1="140" x2="320.870114072131" y2="138.28753076779705" stroke="#111" stroke-width="0.4" stroke-dasharray="2,1.5"/>
+<rect x="298.3333333333333" y="140" width="50" height="12" fill="#fdf2ef" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="323.3333333333333" y="145.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-P1  LEITOR QR</text>
+<text x="323.3333333333333" y="148.6" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">(opcao PoE - alt.)</text>
+<line x1="330" y1="122" x2="380.0" y2="140" stroke="#111" stroke-width="0.4"/>
+<line x1="380.0" y1="140" x2="377.0163480857347" y2="140.31276389577616" stroke="#111" stroke-width="0.4"/>
+<line x1="380.0" y1="140" x2="377.90033585232146" y2="137.85724232192408" stroke="#111" stroke-width="0.4"/>
+<rect x="355.0" y="140" width="50" height="12" fill="#f7f4ea" stroke="#111" stroke-width="0.5" rx="1.5"/>
+<text x="380.0" y="145.4" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">-PC1  DADOS:</text>
+<text x="380.0" y="148.6" font-size="2.6" font-family="Arial" text-anchor="middle" fill="#111">uplink p/ -SW1</text>
+<text x="15" y="157" font-size="2" font-family="Arial" fill="#a33">tracejado = alternativa (escolher UMA alimentacao para -P1: 24V ou PoE, nao as duas)</text>
+<rect x="10" y="230" width="200" height="26" fill="none" stroke="#888" stroke-width="0.3" stroke-dasharray="1.5,1"/>
+<text x="13" y="235" font-size="2.6" font-family="Arial" font-weight="bold">LEGENDA DE TAGS (KKS simplificado)</text>
+<text x="15" y="239" font-size="2.2" font-family="Arial" fill="#333">=QE1        Quadro eletrico principal</text>
+<text x="15" y="243.2" font-size="2.2" font-family="Arial" fill="#333">+ALM/+24V/+PoE/+PC   Localizacao funcional (folhas 2 a 5)</text>
+<text x="15" y="247.39999999999998" font-size="2.2" font-family="Arial" fill="#333">-Q..        Disjuntor    -F..  Fonte/Fusivel    -K..  Rele</text>
+<text x="15" y="251.59999999999997" font-size="2.2" font-family="Arial" fill="#333">-X..        Regua de bornes    -SW1  Switch PoE   -A1  CLP/PLC</text>
+<g class="titleblock" transform="translate(260,262)">
+<rect x="0" y="0" width="155" height="30" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="0" y="0" width="155" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="2.6" font-size="2" fill="#555" font-family="Arial">PROJETO</text>
+<text x="1.5" y="5.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">QUADRO QE1 - CONTROLE DE ACESSO / TRAFEGO</text>
+<rect x="0" y="6" width="100.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="8.6" font-size="2" fill="#555" font-family="Arial">FOLHA</text>
+<text x="1.5" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">CAPA / DIAGRAMA DE BLOCOS</text>
+<rect x="100.75" y="6" width="54.25" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="102.25" y="8.6" font-size="2" fill="#555" font-family="Arial">TAG</text>
+<text x="102.25" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">=QE1</text>
+<rect x="0" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="14.6" font-size="2" fill="#555" font-family="Arial">DATA</text>
+<text x="1.5" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">24/08/2026</text>
+<rect x="38.75" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="40.25" y="14.6" font-size="2" fill="#555" font-family="Arial">REV.</text>
+<text x="40.25" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">00</text>
+<rect x="77.5" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="79.0" y="14.6" font-size="2" fill="#555" font-family="Arial">ESCALA</text>
+<text x="79.0" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">S/ESC</text>
+<rect x="116.25" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="117.75" y="14.6" font-size="2" fill="#555" font-family="Arial">FOLHA Nº</text>
+<text x="117.75" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">1/7</text>
+<rect x="0" y="18" width="155" height="12" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="20.6" font-size="2" fill="#555" font-family="Arial">ELABORADO</text>
+<text x="1.5" y="23.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">Esquema preliminar gerado digitalmente - conferir e redesenhar em EPLAN P8 antes de fabricacao</text>
+</g>
+</svg>
+</div>
+
+<div class="sheet">
+<svg viewBox="0 0 420 297" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="410" height="287" fill="none" stroke="#111" stroke-width="0.7"/>
+<text x="10" y="14" font-size="6" font-family="Arial" font-weight="bold" fill="#111">=QE1+ALM  ALIMENTACAO GERAL CA</text>
+<text x="10" y="20" font-size="3.2" font-family="Arial" fill="#444">Entrada 230V AC, protecao geral e distribuicao para as 3 fontes DC</text>
+<text x="20" y="28" font-size="2.6" font-family="Arial" font-weight="bold">L</text>
+<text x="20" y="34" font-size="2.6" font-family="Arial" font-weight="bold">N</text>
+<text x="20" y="46" font-size="2.6" font-family="Arial" font-weight="bold">PE</text>
+<line x1="30" y1="30" x2="60" y2="30" stroke="#111" stroke-width="0.4"/>
+<circle cx="30" cy="30" r="1.1" fill="#fff" stroke="#111" stroke-width="0.4"/>
+<text x="30" y="28.2" font-size="2" font-family="Arial" text-anchor="middle">1</text>
+<line x1="30" y1="36" x2="60" y2="36" stroke="#111" stroke-width="0.4"/>
+<circle cx="30" cy="36" r="1.1" fill="#fff" stroke="#111" stroke-width="0.4"/>
+<text x="30" y="34.2" font-size="2" font-family="Arial" text-anchor="middle">2</text>
+<line x1="30" y1="42" x2="60" y2="42" stroke="#111" stroke-width="0.4"/>
+<circle cx="30" cy="42" r="1.1" fill="#fff" stroke="#111" stroke-width="0.4"/>
+<text x="30" y="40.2" font-size="2" font-family="Arial" text-anchor="middle">3</text>
+<text x="20" y="26" font-size="2.3" font-family="Arial" fill="#555">-X0  entrada rede</text>
+<line x1="70" y1="30" x2="70" y2="34" stroke="#111" stroke-width="0.4"/>
+<line x1="70" y1="34" x2="73.2" y2="40" stroke="#111" stroke-width="0.5"/>
+<circle cx="70" cy="34" r="0.6" fill="#111"/>
+<circle cx="70" cy="40" r="0.6" fill="#111"/>
+<line x1="70" y1="40" x2="70" y2="44" stroke="#111" stroke-width="0.4"/>
+<rect x="68.4" y="40.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="74.5" y="37" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q1</text>
+<text x="74.5" y="39.6" font-size="2.1" font-family="Arial" fill="#444">2P 16A</text>
+<line x1="70" y1="44" x2="70" y2="48" stroke="#111" stroke-width="0.4"/>
+<line x1="80" y1="30" x2="80" y2="34" stroke="#111" stroke-width="0.4"/>
+<line x1="80" y1="34" x2="83.2" y2="40" stroke="#111" stroke-width="0.5"/>
+<circle cx="80" cy="34" r="0.6" fill="#111"/>
+<circle cx="80" cy="40" r="0.6" fill="#111"/>
+<line x1="80" y1="40" x2="80" y2="44" stroke="#111" stroke-width="0.4"/>
+<rect x="78.4" y="40.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="84.5" y="37" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111"></text>
+<text x="84.5" y="39.6" font-size="2.1" font-family="Arial" fill="#444"></text>
+<line x1="80" y1="44" x2="80" y2="48" stroke="#111" stroke-width="0.4"/>
+<line x1="30" y1="36" x2="80" y2="36" stroke="#111" stroke-width="0.4"/>
+<line x1="80" y1="36" x2="80" y2="30" stroke="#111" stroke-width="0.4"/>
+<line x1="30" y1="42" x2="140" y2="42" stroke="#111" stroke-width="0.4"/>
+<text x="98" y="39" font-size="2.2" font-family="Arial" fill="#444">Seccionador geral / protecao contra sobrecarga e curto-circuito</text>
+<line x1="70" y1="48" x2="70" y2="70" stroke="#111" stroke-width="0.4"/>
+<line x1="80" y1="48" x2="80" y2="70" stroke="#111" stroke-width="0.4"/>
+<circle cx="70" cy="70" r="0.9" fill="#111"/>
+<line x1="70" y1="70" x2="70" y2="75" stroke="#111" stroke-width="0.4"/>
+<rect x="103" y="72" width="4" height="6" fill="#fff" stroke="#111" stroke-width="0.4"/>
+<line x1="103.8" y1="77" x2="106.2" y2="73" stroke="#111" stroke-width="0.4"/>
+<polygon points="106.2,73 105.2,73.6 105.7,74.6" fill="#111"/>
+<text x="108.5" y="76" font-size="2.1" font-family="Arial" font-weight="bold">-F0 DPS</text>
+<line x1="70" y1="75" x2="105" y2="75" stroke="#111" stroke-width="0.4"/>
+<line x1="105" y1="78" x2="105" y2="90" stroke="#111" stroke-width="0.4"/>
+<line x1="105" y1="90" x2="140" y2="90" stroke="#111" stroke-width="0.4"/>
+<text x="108" y="88" font-size="2" font-family="Arial" fill="#a33">-F0: DPS classe II, desliga automat. em falha (contato aux. opcional p/ CLP)</text>
+<line x1="140" y1="42" x2="140" y2="90" stroke="#111" stroke-width="0.4"/>
+<text x="142" y="93" font-size="2" font-family="Arial">PE geral do quadro (barramento -PE)</text>
+<line x1="70" y1="70" x2="70" y2="100" stroke="#111" stroke-width="0.4"/>
+<line x1="70" y1="100" x2="340" y2="100" stroke="#111" stroke-width="0.4"/>
+<line x1="80" y1="70" x2="80" y2="106" stroke="#111" stroke-width="0.4"/>
+<line x1="80" y1="106" x2="340" y2="106" stroke="#111" stroke-width="0.4"/>
+<text x="345" y="101" font-size="2.2" font-family="Arial" fill="#555">L (230V)</text>
+<text x="345" y="107" font-size="2.2" font-family="Arial" fill="#555">N</text>
+<line x1="120" y1="100" x2="120" y2="100" stroke="#111" stroke-width="0.4"/>
+<circle cx="120" cy="100" r="0.9" fill="#111"/>
+<line x1="120" y1="106" x2="120" y2="106" stroke="#111" stroke-width="0.4"/>
+<circle cx="120" cy="106" r="0.9" fill="#111"/>
+<line x1="120" y1="100" x2="120" y2="104" stroke="#111" stroke-width="0.4"/>
+<line x1="120" y1="104" x2="123.2" y2="110" stroke="#111" stroke-width="0.5"/>
+<circle cx="120" cy="104" r="0.6" fill="#111"/>
+<circle cx="120" cy="110" r="0.6" fill="#111"/>
+<line x1="120" y1="110" x2="120" y2="114" stroke="#111" stroke-width="0.4"/>
+<rect x="118.4" y="110.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="124.5" y="107" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q1.1</text>
+<text x="124.5" y="109.6" font-size="2.1" font-family="Arial" fill="#444">2P 4A</text>
+<line x1="120" y1="114" x2="120" y2="118" stroke="#111" stroke-width="0.4"/>
+<line x1="130" y1="106" x2="130" y2="110" stroke="#111" stroke-width="0.4"/>
+<line x1="130" y1="110" x2="133.2" y2="116" stroke="#111" stroke-width="0.5"/>
+<circle cx="130" cy="110" r="0.6" fill="#111"/>
+<circle cx="130" cy="116" r="0.6" fill="#111"/>
+<line x1="130" y1="116" x2="130" y2="120" stroke="#111" stroke-width="0.4"/>
+<rect x="128.4" y="116.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="134.5" y="113" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111"></text>
+<text x="134.5" y="115.6" font-size="2.1" font-family="Arial" fill="#444"></text>
+<line x1="130" y1="120" x2="130" y2="124" stroke="#111" stroke-width="0.4"/>
+<line x1="120" y1="100" x2="120" y2="100" stroke="#111" stroke-width="0.4"/>
+<line x1="130" y1="100" x2="130" y2="106" stroke="#111" stroke-width="0.4"/>
+<line x1="120" y1="118" x2="120" y2="220" stroke="#111" stroke-width="0.4"/>
+<line x1="130" y1="118" x2="130" y2="220" stroke="#111" stroke-width="0.4"/>
+<rect x="106" y="220" width="44" height="14" fill="#eaf7ea" stroke="#111" stroke-width="0.45"/>
+<text x="128.0" y="224.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-F1  Fonte 24V DC</text>
+<text x="128.0" y="227.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">ver folha 3</text>
+<line x1="140" y1="90" x2="140" y2="235" stroke="#111" stroke-width="0.4"/>
+<line x1="220" y1="100" x2="220" y2="100" stroke="#111" stroke-width="0.4"/>
+<circle cx="220" cy="100" r="0.9" fill="#111"/>
+<line x1="220" y1="106" x2="220" y2="106" stroke="#111" stroke-width="0.4"/>
+<circle cx="220" cy="106" r="0.9" fill="#111"/>
+<line x1="220" y1="100" x2="220" y2="104" stroke="#111" stroke-width="0.4"/>
+<line x1="220" y1="104" x2="223.2" y2="110" stroke="#111" stroke-width="0.5"/>
+<circle cx="220" cy="104" r="0.6" fill="#111"/>
+<circle cx="220" cy="110" r="0.6" fill="#111"/>
+<line x1="220" y1="110" x2="220" y2="114" stroke="#111" stroke-width="0.4"/>
+<rect x="218.4" y="110.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="224.5" y="107" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q1.2</text>
+<text x="224.5" y="109.6" font-size="2.1" font-family="Arial" fill="#444">2P 4A</text>
+<line x1="220" y1="114" x2="220" y2="118" stroke="#111" stroke-width="0.4"/>
+<line x1="230" y1="106" x2="230" y2="110" stroke="#111" stroke-width="0.4"/>
+<line x1="230" y1="110" x2="233.2" y2="116" stroke="#111" stroke-width="0.5"/>
+<circle cx="230" cy="110" r="0.6" fill="#111"/>
+<circle cx="230" cy="116" r="0.6" fill="#111"/>
+<line x1="230" y1="116" x2="230" y2="120" stroke="#111" stroke-width="0.4"/>
+<rect x="228.4" y="116.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="234.5" y="113" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111"></text>
+<text x="234.5" y="115.6" font-size="2.1" font-family="Arial" fill="#444"></text>
+<line x1="230" y1="120" x2="230" y2="124" stroke="#111" stroke-width="0.4"/>
+<line x1="220" y1="100" x2="220" y2="100" stroke="#111" stroke-width="0.4"/>
+<line x1="230" y1="100" x2="230" y2="106" stroke="#111" stroke-width="0.4"/>
+<line x1="220" y1="118" x2="220" y2="220" stroke="#111" stroke-width="0.4"/>
+<line x1="230" y1="118" x2="230" y2="220" stroke="#111" stroke-width="0.4"/>
+<rect x="206" y="220" width="44" height="14" fill="#fdeeea" stroke="#111" stroke-width="0.45"/>
+<text x="228.0" y="224.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-F2  Fonte 48/54V DC (PoE)</text>
+<text x="228.0" y="227.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">ver folha 4</text>
+<line x1="140" y1="90" x2="140" y2="235" stroke="#111" stroke-width="0.4"/>
+<line x1="300" y1="100" x2="300" y2="100" stroke="#111" stroke-width="0.4"/>
+<circle cx="300" cy="100" r="0.9" fill="#111"/>
+<line x1="300" y1="106" x2="300" y2="106" stroke="#111" stroke-width="0.4"/>
+<circle cx="300" cy="106" r="0.9" fill="#111"/>
+<line x1="300" y1="100" x2="300" y2="104" stroke="#111" stroke-width="0.4"/>
+<line x1="300" y1="104" x2="303.2" y2="110" stroke="#111" stroke-width="0.5"/>
+<circle cx="300" cy="104" r="0.6" fill="#111"/>
+<circle cx="300" cy="110" r="0.6" fill="#111"/>
+<line x1="300" y1="110" x2="300" y2="114" stroke="#111" stroke-width="0.4"/>
+<rect x="298.4" y="110.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="304.5" y="107" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q1.3</text>
+<text x="304.5" y="109.6" font-size="2.1" font-family="Arial" fill="#444">2P 2A</text>
+<line x1="300" y1="114" x2="300" y2="118" stroke="#111" stroke-width="0.4"/>
+<line x1="310" y1="106" x2="310" y2="110" stroke="#111" stroke-width="0.4"/>
+<line x1="310" y1="110" x2="313.2" y2="116" stroke="#111" stroke-width="0.5"/>
+<circle cx="310" cy="110" r="0.6" fill="#111"/>
+<circle cx="310" cy="116" r="0.6" fill="#111"/>
+<line x1="310" y1="116" x2="310" y2="120" stroke="#111" stroke-width="0.4"/>
+<rect x="308.4" y="116.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="314.5" y="113" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111"></text>
+<text x="314.5" y="115.6" font-size="2.1" font-family="Arial" fill="#444"></text>
+<line x1="310" y1="120" x2="310" y2="124" stroke="#111" stroke-width="0.4"/>
+<line x1="300" y1="100" x2="300" y2="100" stroke="#111" stroke-width="0.4"/>
+<line x1="310" y1="100" x2="310" y2="106" stroke="#111" stroke-width="0.4"/>
+<line x1="300" y1="118" x2="300" y2="220" stroke="#111" stroke-width="0.4"/>
+<line x1="310" y1="118" x2="310" y2="220" stroke="#111" stroke-width="0.4"/>
+<rect x="286" y="220" width="44" height="14" fill="#f6f2e8" stroke="#111" stroke-width="0.45"/>
+<text x="308.0" y="224.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-F3  Fonte/adaptador mini-PC</text>
+<text x="308.0" y="227.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">ver folha 5</text>
+<line x1="140" y1="90" x2="140" y2="235" stroke="#111" stroke-width="0.4"/>
+<line x1="140" y1="235" x2="106" y2="235" stroke="#111" stroke-width="0.4"/>
+<text x="30" y="243" font-size="2.1" font-family="Arial">-PE segue para os bornes de terra de -F1,-F2,-F3 (folhas 3,4,5)</text>
+<rect x="10" y="250" width="395" height="10" fill="none" stroke="#888" stroke-width="0.3" stroke-dasharray="1.5,1"/>
+<text x="13" y="256" font-size="2.1" font-family="Arial" fill="#a33">NOTA: representacao unifilar simplificada (L+N). -Q1 e derivacoes sao bipolares (2P). PE dedicado, sem fusivel, conforme NBR 5410 / NR-10.</text>
+<g class="titleblock" transform="translate(260,262)">
+<rect x="0" y="0" width="155" height="30" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="0" y="0" width="155" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="2.6" font-size="2" fill="#555" font-family="Arial">PROJETO</text>
+<text x="1.5" y="5.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">QUADRO QE1 - CONTROLE DE ACESSO / TRAFEGO</text>
+<rect x="0" y="6" width="100.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="8.6" font-size="2" fill="#555" font-family="Arial">FOLHA</text>
+<text x="1.5" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">ALIMENTACAO GERAL CA</text>
+<rect x="100.75" y="6" width="54.25" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="102.25" y="8.6" font-size="2" fill="#555" font-family="Arial">TAG</text>
+<text x="102.25" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">=QE1+ALM</text>
+<rect x="0" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="14.6" font-size="2" fill="#555" font-family="Arial">DATA</text>
+<text x="1.5" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">24/08/2026</text>
+<rect x="38.75" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="40.25" y="14.6" font-size="2" fill="#555" font-family="Arial">REV.</text>
+<text x="40.25" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">00</text>
+<rect x="77.5" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="79.0" y="14.6" font-size="2" fill="#555" font-family="Arial">ESCALA</text>
+<text x="79.0" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">S/ESC</text>
+<rect x="116.25" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="117.75" y="14.6" font-size="2" fill="#555" font-family="Arial">FOLHA Nº</text>
+<text x="117.75" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">2/7</text>
+<rect x="0" y="18" width="155" height="12" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="20.6" font-size="2" fill="#555" font-family="Arial">ELABORADO</text>
+<text x="1.5" y="23.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">Esquema preliminar gerado digitalmente - conferir e redesenhar em EPLAN P8 antes de fabricacao</text>
+</g>
+</svg>
+</div>
+
+<div class="sheet">
+<svg viewBox="0 0 420 297" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="410" height="287" fill="none" stroke="#111" stroke-width="0.7"/>
+<text x="10" y="14" font-size="6" font-family="Arial" font-weight="bold" fill="#111">=QE1+24V  FONTE 24V DC E DISTRIBUICAO</text>
+<text x="10" y="20" font-size="3.2" font-family="Arial" fill="#444">Alimenta CLP, reles K1-K3, semaforos 24V e leitor QR (opcao 24V)</text>
+<text x="15" y="26" font-size="2.3" font-family="Arial" fill="#555">Entrada 230V AC (de -Q1.1, folha 2)</text>
+<line x1="20" y1="30" x2="20" y2="40" stroke="#111" stroke-width="0.4"/>
+<rect x="10" y="40" width="55" height="16" fill="#f5f7fa" stroke="#111" stroke-width="0.45"/>
+<text x="37.5" y="44.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-F1  FONTE 24V DC</text>
+<text x="37.5" y="47.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">230VAC / 24VDC ~2,5A</text>
+<text x="37.5" y="50.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">(ex: Mean Well DR-60-24)</text>
+<line x1="35" y1="56" x2="35" y2="60" stroke="#111" stroke-width="0.4"/>
+<text x="37" y="58" font-size="2" font-family="Arial">+24V</text>
+<line x1="35" y1="60" x2="35" y2="70" stroke="#111" stroke-width="0.4"/>
+<circle cx="35" cy="70" r="0.9" fill="#111"/>
+<line x1="35" y1="70" x2="380" y2="70" stroke="#111" stroke-width="0.4"/>
+<text x="384" y="71" font-size="2.3" font-family="Arial" fill="#555">+24V</text>
+<text x="47" y="58" font-size="2" font-family="Arial">0V</text>
+<line x1="45" y1="56" x2="45" y2="230" stroke="#111" stroke-width="0.4"/>
+<line x1="45" y1="230" x2="380" y2="230" stroke="#111" stroke-width="0.4"/>
+<text x="384" y="231" font-size="2.3" font-family="Arial" fill="#555">0V</text>
+<line x1="35" y1="72" x2="35" y2="76" stroke="#111" stroke-width="0.4"/>
+<line x1="35" y1="76" x2="38.2" y2="82" stroke="#111" stroke-width="0.5"/>
+<circle cx="35" cy="76" r="0.6" fill="#111"/>
+<circle cx="35" cy="82" r="0.6" fill="#111"/>
+<line x1="35" y1="82" x2="35" y2="86" stroke="#111" stroke-width="0.4"/>
+<rect x="33.4" y="82.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="39.5" y="79" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q2</text>
+<text x="39.5" y="81.6" font-size="2.1" font-family="Arial" fill="#444">10A geral DC</text>
+<line x1="35" y1="86" x2="35" y2="90" stroke="#111" stroke-width="0.4"/>
+<line x1="35" y1="90" x2="35" y2="95" stroke="#111" stroke-width="0.4"/>
+<line x1="35" y1="95" x2="380" y2="95" stroke="#111" stroke-width="0.4"/>
+<circle cx="35" cy="95" r="0.9" fill="#111"/>
+<text x="384" y="96" font-size="2.1" font-family="Arial" fill="#555">+24V protegido</text>
+<line x1="70" y1="95" x2="70" y2="95" stroke="#111" stroke-width="0.4"/>
+<circle cx="70" cy="95" r="0.9" fill="#111"/>
+<line x1="70" y1="95" x2="70" y2="99" stroke="#111" stroke-width="0.4"/>
+<line x1="70" y1="99" x2="73.2" y2="105" stroke="#111" stroke-width="0.5"/>
+<circle cx="70" cy="99" r="0.6" fill="#111"/>
+<circle cx="70" cy="105" r="0.6" fill="#111"/>
+<line x1="70" y1="105" x2="70" y2="109" stroke="#111" stroke-width="0.4"/>
+<rect x="68.4" y="105.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="74.5" y="102" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q2.1</text>
+<text x="74.5" y="104.6" font-size="2.1" font-family="Arial" fill="#444">2A</text>
+<line x1="70" y1="109" x2="70" y2="113" stroke="#111" stroke-width="0.4"/>
+<line x1="70" y1="113" x2="70" y2="125" stroke="#111" stroke-width="0.4"/>
+<rect x="52" y="125" width="44" height="11" fill="#f2f8f2" stroke="#111" stroke-width="0.45"/>
+<text x="74.0" y="129.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-A1  CLP / PLC</text>
+<text x="74.0" y="132.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">entradas/saidas digitais</text>
+<line x1="80" y1="230" x2="80" y2="136" stroke="#111" stroke-width="0.4"/>
+<line x1="80" y1="136" x2="80" y2="136" stroke="#111" stroke-width="0.4"/>
+<line x1="140" y1="95" x2="140" y2="95" stroke="#111" stroke-width="0.4"/>
+<circle cx="140" cy="95" r="0.9" fill="#111"/>
+<line x1="140" y1="95" x2="140" y2="99" stroke="#111" stroke-width="0.4"/>
+<line x1="140" y1="99" x2="143.2" y2="105" stroke="#111" stroke-width="0.5"/>
+<circle cx="140" cy="99" r="0.6" fill="#111"/>
+<circle cx="140" cy="105" r="0.6" fill="#111"/>
+<line x1="140" y1="105" x2="140" y2="109" stroke="#111" stroke-width="0.4"/>
+<rect x="138.4" y="105.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="144.5" y="102" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q2.2</text>
+<text x="144.5" y="104.6" font-size="2.1" font-family="Arial" fill="#444">2A</text>
+<line x1="140" y1="109" x2="140" y2="113" stroke="#111" stroke-width="0.4"/>
+<line x1="140" y1="113" x2="140" y2="125" stroke="#111" stroke-width="0.4"/>
+<rect x="122" y="125" width="44" height="14" fill="#f2f8f2" stroke="#111" stroke-width="0.45"/>
+<text x="144.0" y="129.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-K1,-K2,-K3</text>
+<text x="144.0" y="132.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">reles de interface 24VDC</text>
+<text x="144.0" y="135.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">(comando via saidas do -A1)</text>
+<line x1="150" y1="230" x2="150" y2="139" stroke="#111" stroke-width="0.4"/>
+<line x1="150" y1="139" x2="150" y2="139" stroke="#111" stroke-width="0.4"/>
+<line x1="220" y1="95" x2="220" y2="95" stroke="#111" stroke-width="0.4"/>
+<circle cx="220" cy="95" r="0.9" fill="#111"/>
+<line x1="220" y1="95" x2="220" y2="99" stroke="#111" stroke-width="0.4"/>
+<line x1="220" y1="99" x2="223.2" y2="105" stroke="#111" stroke-width="0.5"/>
+<circle cx="220" cy="99" r="0.6" fill="#111"/>
+<circle cx="220" cy="105" r="0.6" fill="#111"/>
+<line x1="220" y1="105" x2="220" y2="109" stroke="#111" stroke-width="0.4"/>
+<rect x="218.4" y="105.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="224.5" y="102" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q2.3</text>
+<text x="224.5" y="104.6" font-size="2.1" font-family="Arial" fill="#444">4A</text>
+<line x1="220" y1="109" x2="220" y2="113" stroke="#111" stroke-width="0.4"/>
+<line x1="220" y1="113" x2="220" y2="125" stroke="#111" stroke-width="0.4"/>
+<rect x="202" y="125" width="44" height="11" fill="#f2f8f2" stroke="#111" stroke-width="0.45"/>
+<text x="224.0" y="129.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-H1..Hn</text>
+<text x="224.0" y="132.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">semaforos 24V</text>
+<line x1="230" y1="230" x2="230" y2="136" stroke="#111" stroke-width="0.4"/>
+<line x1="230" y1="136" x2="230" y2="136" stroke="#111" stroke-width="0.4"/>
+<line x1="300" y1="95" x2="300" y2="95" stroke="#111" stroke-width="0.4"/>
+<circle cx="300" cy="95" r="0.9" fill="#111"/>
+<line x1="300" y1="95" x2="300" y2="99" stroke="#111" stroke-width="0.4"/>
+<line x1="300" y1="99" x2="303.2" y2="105" stroke="#111" stroke-width="0.5"/>
+<circle cx="300" cy="99" r="0.6" fill="#111"/>
+<circle cx="300" cy="105" r="0.6" fill="#111"/>
+<line x1="300" y1="105" x2="300" y2="109" stroke="#111" stroke-width="0.4"/>
+<rect x="298.4" y="105.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="304.5" y="102" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q2.4</text>
+<text x="304.5" y="104.6" font-size="2.1" font-family="Arial" fill="#444">1A</text>
+<line x1="300" y1="109" x2="300" y2="113" stroke="#111" stroke-width="0.4"/>
+<line x1="300" y1="113" x2="300" y2="125" stroke="#111" stroke-width="0.4"/>
+<rect x="282" y="125" width="44" height="14" fill="#fdf2ef" stroke="#111" stroke-width="0.45"/>
+<text x="304.0" y="129.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-P1  Leitor QR</text>
+<text x="304.0" y="132.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">opcao alimentacao 24V</text>
+<text x="304.0" y="135.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">(alternativa: folha 4, PoE)</text>
+<line x1="310" y1="230" x2="310" y2="139" stroke="#111" stroke-width="0.4"/>
+<line x1="310" y1="139" x2="310" y2="139" stroke="#111" stroke-width="0.4"/>
+<text x="115" y="161" font-size="2.2" font-family="Arial" fill="#333">Detalhe -K1..-K3 (repetir para cada rele):</text>
+<line x1="120" y1="165" x2="120" y2="165" stroke="#111" stroke-width="0.4"/>
+<rect x="117" y="165" width="6" height="5" fill="#fff" stroke="#111" stroke-width="0.4"/>
+<text x="120" y="168.4" font-size="2.3" font-family="Arial" text-anchor="middle" font-weight="bold">-K1</text>
+<line x1="120" y1="170" x2="120" y2="175" stroke="#111" stroke-width="0.4"/>
+<text x="114" y="179" font-size="1.9" font-family="Arial" fill="#555">DO1 (-A1)</text>
+<line x1="135" y1="165" x2="135" y2="167.5" stroke="#111" stroke-width="0.4"/>
+<line x1="133.4" y1="167.5" x2="136.6" y2="171" stroke="#111" stroke-width="0.4"/>
+<line x1="133.4" y1="171" x2="133.4" y2="173.5" stroke="#111" stroke-width="0.4"/>
+<line x1="136.6" y1="167.5" x2="136.6" y2="167.9" stroke="#111" stroke-width="0.001"/>
+<circle cx="135" cy="167.5" r="0.5" fill="#111"/>
+<circle cx="133.4" cy="171" r="0.5" fill="#111"/>
+<text x="137.5" y="170" font-size="1.9" font-family="Arial">13-14</text>
+<text x="131" y="176" font-size="1.8" font-family="Arial" fill="#555">saida comandada</text>
+<line x1="150" y1="165" x2="150" y2="165" stroke="#111" stroke-width="0.4"/>
+<rect x="147" y="165" width="6" height="5" fill="#fff" stroke="#111" stroke-width="0.4"/>
+<text x="150" y="168.4" font-size="2.3" font-family="Arial" text-anchor="middle" font-weight="bold">-K2</text>
+<line x1="150" y1="170" x2="150" y2="175" stroke="#111" stroke-width="0.4"/>
+<text x="144" y="179" font-size="1.9" font-family="Arial" fill="#555">DO2 (-A1)</text>
+<line x1="165" y1="165" x2="165" y2="167.5" stroke="#111" stroke-width="0.4"/>
+<line x1="163.4" y1="167.5" x2="166.6" y2="171" stroke="#111" stroke-width="0.4"/>
+<line x1="163.4" y1="171" x2="163.4" y2="173.5" stroke="#111" stroke-width="0.4"/>
+<line x1="166.6" y1="167.5" x2="166.6" y2="167.9" stroke="#111" stroke-width="0.001"/>
+<circle cx="165" cy="167.5" r="0.5" fill="#111"/>
+<circle cx="163.4" cy="171" r="0.5" fill="#111"/>
+<text x="167.5" y="170" font-size="1.9" font-family="Arial">13-14</text>
+<text x="161" y="176" font-size="1.8" font-family="Arial" fill="#555">saida comandada</text>
+<line x1="180" y1="165" x2="180" y2="165" stroke="#111" stroke-width="0.4"/>
+<rect x="177" y="165" width="6" height="5" fill="#fff" stroke="#111" stroke-width="0.4"/>
+<text x="180" y="168.4" font-size="2.3" font-family="Arial" text-anchor="middle" font-weight="bold">-K3</text>
+<line x1="180" y1="170" x2="180" y2="175" stroke="#111" stroke-width="0.4"/>
+<text x="174" y="179" font-size="1.9" font-family="Arial" fill="#555">DO3 (-A1)</text>
+<line x1="195" y1="165" x2="195" y2="167.5" stroke="#111" stroke-width="0.4"/>
+<line x1="193.4" y1="167.5" x2="196.6" y2="171" stroke="#111" stroke-width="0.4"/>
+<line x1="193.4" y1="171" x2="193.4" y2="173.5" stroke="#111" stroke-width="0.4"/>
+<line x1="196.6" y1="167.5" x2="196.6" y2="167.9" stroke="#111" stroke-width="0.001"/>
+<circle cx="195" cy="167.5" r="0.5" fill="#111"/>
+<circle cx="193.4" cy="171" r="0.5" fill="#111"/>
+<text x="197.5" y="170" font-size="1.9" font-family="Arial">13-14</text>
+<text x="191" y="176" font-size="1.8" font-family="Arial" fill="#555">saida comandada</text>
+<rect x="10" y="255" width="395" height="14" fill="none" stroke="#888" stroke-width="0.3" stroke-dasharray="1.5,1"/>
+<text x="13" y="261" font-size="2.1" font-family="Arial" fill="#a33">NOTA: cargas conectadas em -X3 (folha 6). Contatos NA -K1..K3 13-14 disponiveis para cortar/comandar cargas de campo especificas (definir com projeto mecanico/civil).</text>
+<text x="13" y="266" font-size="2.1" font-family="Arial" fill="#a33">Dimensionar -Q2.x conforme corrente real de cada carga (valores acima sao estimativa preliminar).</text>
+<g class="titleblock" transform="translate(260,262)">
+<rect x="0" y="0" width="155" height="30" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="0" y="0" width="155" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="2.6" font-size="2" fill="#555" font-family="Arial">PROJETO</text>
+<text x="1.5" y="5.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">QUADRO QE1 - CONTROLE DE ACESSO / TRAFEGO</text>
+<rect x="0" y="6" width="100.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="8.6" font-size="2" fill="#555" font-family="Arial">FOLHA</text>
+<text x="1.5" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">FONTE 24VDC E DISTRIBUICAO</text>
+<rect x="100.75" y="6" width="54.25" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="102.25" y="8.6" font-size="2" fill="#555" font-family="Arial">TAG</text>
+<text x="102.25" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">=QE1+24V</text>
+<rect x="0" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="14.6" font-size="2" fill="#555" font-family="Arial">DATA</text>
+<text x="1.5" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">24/08/2026</text>
+<rect x="38.75" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="40.25" y="14.6" font-size="2" fill="#555" font-family="Arial">REV.</text>
+<text x="40.25" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">00</text>
+<rect x="77.5" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="79.0" y="14.6" font-size="2" fill="#555" font-family="Arial">ESCALA</text>
+<text x="79.0" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">S/ESC</text>
+<rect x="116.25" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="117.75" y="14.6" font-size="2" fill="#555" font-family="Arial">FOLHA Nº</text>
+<text x="117.75" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">3/7</text>
+<rect x="0" y="18" width="155" height="12" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="20.6" font-size="2" fill="#555" font-family="Arial">ELABORADO</text>
+<text x="1.5" y="23.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">Esquema preliminar gerado digitalmente - conferir e redesenhar em EPLAN P8 antes de fabricacao</text>
+</g>
+</svg>
+</div>
+
+<div class="sheet">
+<svg viewBox="0 0 420 297" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="410" height="287" fill="none" stroke="#111" stroke-width="0.7"/>
+<text x="10" y="14" font-size="6" font-family="Arial" font-weight="bold" fill="#111">=QE1+PoE  FONTE 48/54V DC E SWITCH PoE</text>
+<text x="10" y="20" font-size="3.2" font-family="Arial" fill="#444">Alimenta cameras PoE e, opcionalmente, o leitor QR</text>
+<text x="15" y="26" font-size="2.3" font-family="Arial" fill="#555">Entrada 230V AC (de -Q1.2, folha 2)</text>
+<line x1="20" y1="30" x2="20" y2="40" stroke="#111" stroke-width="0.4"/>
+<rect x="10" y="40" width="55" height="16" fill="#f5f7fa" stroke="#111" stroke-width="0.45"/>
+<text x="37.5" y="44.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-F2  FONTE 48/54V DC</text>
+<text x="37.5" y="47.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">230VAC / 48-54VDC ~2A</text>
+<text x="37.5" y="50.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">(ex: Mean Well RPS/UHP)</text>
+<line x1="37" y1="56" x2="37" y2="65" stroke="#111" stroke-width="0.4"/>
+<line x1="37" y1="65" x2="37" y2="69" stroke="#111" stroke-width="0.4"/>
+<line x1="37" y1="69" x2="40.2" y2="75" stroke="#111" stroke-width="0.5"/>
+<circle cx="37" cy="69" r="0.6" fill="#111"/>
+<circle cx="37" cy="75" r="0.6" fill="#111"/>
+<line x1="37" y1="75" x2="37" y2="79" stroke="#111" stroke-width="0.4"/>
+<rect x="35.4" y="75.5" width="3.2" height="3.5" fill="none" stroke="#111" stroke-width="0.35"/>
+<text x="41.5" y="72" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-Q3</text>
+<text x="41.5" y="74.6" font-size="2.1" font-family="Arial" fill="#444">4A</text>
+<line x1="37" y1="79" x2="37" y2="83" stroke="#111" stroke-width="0.4"/>
+<line x1="37" y1="83" x2="37" y2="95" stroke="#111" stroke-width="0.4"/>
+<text x="41" y="93" font-size="2" font-family="Arial">48-54VDC / 0V para -SW1</text>
+<line x1="37" y1="95" x2="110" y2="95" stroke="#111" stroke-width="0.4"/>
+<rect x="110" y="86" width="60" height="18" fill="#fdeeea" stroke="#111" stroke-width="0.45"/>
+<text x="140.0" y="90.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-SW1  SWITCH PoE</text>
+<text x="140.0" y="93.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">alimentacao DC 48-54V</text>
+<text x="140.0" y="96.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">(entrada dedicada ou</text>
+<text x="140.0" y="99.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">injetor PoE por porta)</text>
+<text x="115" y="70" font-size="2.1" font-family="Arial" fill="#555">-X4:1(+),2(0V)  regua de bornes 48V (ver folha 6)</text>
+<line x1="170" y1="95" x2="190" y2="95" stroke="#111" stroke-width="0.4"/>
+<text x="192" y="93" font-size="2" font-family="Arial">Uplink Ethernet -&gt; -PC1 (folha 5)</text>
+<line x1="140" y1="110" x2="130" y2="130" stroke="#111" stroke-width="0.4"/>
+<rect x="110" y="130" width="70" height="14" fill="#fdf2ef" stroke="#111" stroke-width="0.45"/>
+<text x="145.0" y="134.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-B1..Bn  Camera(s) PoE</text>
+<text x="145.0" y="137.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">porta(s) LAN + PoE</text>
+<line x1="140" y1="110" x2="220" y2="130" stroke="#111" stroke-width="0.4" stroke-dasharray="2,1.5"/>
+<rect x="200" y="130" width="70" height="14" fill="#fdf2ef" stroke="#111" stroke-width="0.45"/>
+<text x="235.0" y="134.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-P1  Leitor QR (opcao PoE)</text>
+<text x="235.0" y="137.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">alternativa a folha 3 (tracejado)</text>
+<text x="115" y="150" font-size="2" font-family="Arial" fill="#a33">Escolher UMA alimentacao para -P1: 24V (folha 3) OU PoE (esta folha). Nao energizar as duas simultaneamente.</text>
+<rect x="10" y="230" width="395" height="20" fill="none" stroke="#888" stroke-width="0.3" stroke-dasharray="1.5,1"/>
+<text x="13" y="236" font-size="2.1" font-family="Arial">Observacoes:</text>
+<text x="13" y="241" font-size="2" font-family="Arial" fill="#333">- Confirmar tensao PoE exigida pelas cameras/leitor (802.3af=48V / 802.3at=54V) antes de especificar -F2.</text>
+<text x="13" y="246" font-size="2" font-family="Arial" fill="#333">- Dimensionar -SW1 (numero de portas) conforme quantidade real de cameras do projeto.</text>
+<g class="titleblock" transform="translate(260,262)">
+<rect x="0" y="0" width="155" height="30" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="0" y="0" width="155" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="2.6" font-size="2" fill="#555" font-family="Arial">PROJETO</text>
+<text x="1.5" y="5.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">QUADRO QE1 - CONTROLE DE ACESSO / TRAFEGO</text>
+<rect x="0" y="6" width="100.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="8.6" font-size="2" fill="#555" font-family="Arial">FOLHA</text>
+<text x="1.5" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">FONTE 48/54VDC E SWITCH PoE</text>
+<rect x="100.75" y="6" width="54.25" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="102.25" y="8.6" font-size="2" fill="#555" font-family="Arial">TAG</text>
+<text x="102.25" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">=QE1+PoE</text>
+<rect x="0" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="14.6" font-size="2" fill="#555" font-family="Arial">DATA</text>
+<text x="1.5" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">24/08/2026</text>
+<rect x="38.75" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="40.25" y="14.6" font-size="2" fill="#555" font-family="Arial">REV.</text>
+<text x="40.25" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">00</text>
+<rect x="77.5" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="79.0" y="14.6" font-size="2" fill="#555" font-family="Arial">ESCALA</text>
+<text x="79.0" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">S/ESC</text>
+<rect x="116.25" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="117.75" y="14.6" font-size="2" fill="#555" font-family="Arial">FOLHA Nº</text>
+<text x="117.75" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">4/7</text>
+<rect x="0" y="18" width="155" height="12" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="20.6" font-size="2" fill="#555" font-family="Arial">ELABORADO</text>
+<text x="1.5" y="23.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">Esquema preliminar gerado digitalmente - conferir e redesenhar em EPLAN P8 antes de fabricacao</text>
+</g>
+</svg>
+</div>
+
+<div class="sheet">
+<svg viewBox="0 0 420 297" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="410" height="287" fill="none" stroke="#111" stroke-width="0.7"/>
+<text x="10" y="14" font-size="6" font-family="Arial" font-weight="bold" fill="#111">=QE1+PC  ALIMENTACAO MINI-PC / GATEWAY</text>
+<text x="10" y="20" font-size="3.2" font-family="Arial" fill="#444">Fonte dedicada para o computador de borda / gateway do sistema</text>
+<text x="15" y="26" font-size="2.3" font-family="Arial" fill="#555">Entrada 230V AC (de -Q1.3, folha 2)</text>
+<line x1="20" y1="30" x2="20" y2="40" stroke="#111" stroke-width="0.4"/>
+<rect x="10" y="40" width="60" height="12" fill="#f5f7fa" stroke="#111" stroke-width="0.45"/>
+<text x="40.0" y="44.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-F3  FONTE/ADAPTADOR MINI-PC</text>
+<text x="40.0" y="47.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">230VAC / conforme mini-PC</text>
+<text x="40.0" y="50.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">(12V/19V - definir modelo)</text>
+<line x1="40" y1="52" x2="40" y2="65" stroke="#111" stroke-width="0.4"/>
+<line x1="40" y1="65" x2="40" y2="68" stroke="#111" stroke-width="0.4"/>
+<rect x="38.6" y="68" width="2.8" height="7" fill="none" stroke="#111" stroke-width="0.4"/>
+<line x1="40" y1="75" x2="40" y2="78" stroke="#111" stroke-width="0.4"/>
+<text x="43" y="71" font-size="2.4" font-family="Arial" font-weight="bold" fill="#111">-F3.1</text>
+<text x="43" y="73.6" font-size="2.1" font-family="Arial" fill="#444">2A</text>
+<line x1="40" y1="78" x2="40" y2="95" stroke="#111" stroke-width="0.4"/>
+<rect x="15" y="95" width="55" height="14" fill="#f6f2e8" stroke="#111" stroke-width="0.45"/>
+<text x="42.5" y="99.2" font-size="2.6" font-family="Arial" font-weight="bold" text-anchor="middle" fill="#111">-PC1  MINI-PC / GATEWAY</text>
+<text x="42.5" y="102.6" font-size="2.15" font-family="Arial" text-anchor="middle" fill="#333">alimentacao DC</text>
+<line x1="70" y1="102" x2="110" y2="102" stroke="#111" stroke-width="0.4"/>
+<text x="112" y="100" font-size="2.1" font-family="Arial">Ethernet -&gt; -SW1 (folha 4, uplink)</text>
+<rect x="10" y="230" width="395" height="14" fill="none" stroke="#888" stroke-width="0.3" stroke-dasharray="1.5,1"/>
+<text x="13" y="236" font-size="2.1" font-family="Arial" fill="#a33">NOTA: tensao/corrente de -F3 dependem do modelo do mini-PC/gateway definido (nao informado). Ajustar antes da compra.</text>
+<text x="13" y="241" font-size="2" font-family="Arial" fill="#333">Alternativa: eliminar -F3 e alimentar o mini-PC via conversor DC/DC 24V-&gt;Vpc a partir de -X3 (folha 3), reduzindo uma fonte.</text>
+<g class="titleblock" transform="translate(260,262)">
+<rect x="0" y="0" width="155" height="30" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="0" y="0" width="155" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="2.6" font-size="2" fill="#555" font-family="Arial">PROJETO</text>
+<text x="1.5" y="5.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">QUADRO QE1 - CONTROLE DE ACESSO / TRAFEGO</text>
+<rect x="0" y="6" width="100.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="8.6" font-size="2" fill="#555" font-family="Arial">FOLHA</text>
+<text x="1.5" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">ALIMENTACAO MINI-PC/GATEWAY</text>
+<rect x="100.75" y="6" width="54.25" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="102.25" y="8.6" font-size="2" fill="#555" font-family="Arial">TAG</text>
+<text x="102.25" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">=QE1+PC</text>
+<rect x="0" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="14.6" font-size="2" fill="#555" font-family="Arial">DATA</text>
+<text x="1.5" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">24/08/2026</text>
+<rect x="38.75" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="40.25" y="14.6" font-size="2" fill="#555" font-family="Arial">REV.</text>
+<text x="40.25" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">00</text>
+<rect x="77.5" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="79.0" y="14.6" font-size="2" fill="#555" font-family="Arial">ESCALA</text>
+<text x="79.0" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">S/ESC</text>
+<rect x="116.25" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="117.75" y="14.6" font-size="2" fill="#555" font-family="Arial">FOLHA Nº</text>
+<text x="117.75" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">5/7</text>
+<rect x="0" y="18" width="155" height="12" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="20.6" font-size="2" fill="#555" font-family="Arial">ELABORADO</text>
+<text x="1.5" y="23.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">Esquema preliminar gerado digitalmente - conferir e redesenhar em EPLAN P8 antes de fabricacao</text>
+</g>
+</svg>
+</div>
+
+<div class="sheet">
+<svg viewBox="0 0 420 297" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="410" height="287" fill="none" stroke="#111" stroke-width="0.7"/>
+<text x="10" y="14" font-size="6" font-family="Arial" font-weight="bold" fill="#111">REGUAS DE BORNES -X0 A -X4</text>
+<text x="10" y="20" font-size="3.2" font-family="Arial" fill="#444">Referencia cruzada de fios entre folhas</text>
+<text x="15" y="30" font-size="2.6" font-family="Arial" font-weight="bold">-X0  Entrada de rede (folha 2)</text>
+<rect x="15" y="32" width="120" height="21" fill="none" stroke="#111" stroke-width="0.3"/>
+<text x="17" y="39" font-size="2.1" font-family="Arial">1  L  entrada 230VAC</text>
+<text x="17" y="44" font-size="2.1" font-family="Arial">2  N  entrada 230VAC</text>
+<text x="17" y="49" font-size="2.1" font-family="Arial">3  PE  terra de protecao</text>
+<text x="150" y="30" font-size="2.6" font-family="Arial" font-weight="bold">-X2  Barramento 24VDC protegido (folha 3)</text>
+<rect x="150" y="32" width="120" height="21" fill="none" stroke="#111" stroke-width="0.3"/>
+<text x="152" y="39" font-size="2.1" font-family="Arial">1  +24V geral (pos -Q2)</text>
+<text x="152" y="44" font-size="2.1" font-family="Arial">2  0V geral</text>
+<text x="152" y="49" font-size="2.1" font-family="Arial">3..10  derivacoes -Q2.1..-Q2.4</text>
+<text x="285" y="30" font-size="2.6" font-family="Arial" font-weight="bold">-X3  Cargas 24V (folha 3)</text>
+<rect x="285" y="32" width="120" height="26" fill="none" stroke="#111" stroke-width="0.3"/>
+<text x="287" y="39" font-size="2.1" font-family="Arial">1,2  -A1 CLP (+24V/0V)</text>
+<text x="287" y="44" font-size="2.1" font-family="Arial">3,4  -K1,-K2,-K3 comum (+24V/0V)</text>
+<text x="287" y="49" font-size="2.1" font-family="Arial">5,6  -H1..Hn semaforos</text>
+<text x="287" y="54" font-size="2.1" font-family="Arial">7,8  -P1 leitor QR (opcao 24V)</text>
+<text x="15" y="100" font-size="2.6" font-family="Arial" font-weight="bold">-X4  Barramento 48/54VDC (folha 4)</text>
+<rect x="15" y="102" width="120" height="21" fill="none" stroke="#111" stroke-width="0.3"/>
+<text x="17" y="109" font-size="2.1" font-family="Arial">1  +48-54V (pos -Q3)</text>
+<text x="17" y="114" font-size="2.1" font-family="Arial">2  0V</text>
+<text x="17" y="119" font-size="2.1" font-family="Arial">3,4  -SW1 alimentacao</text>
+<text x="150" y="100" font-size="2.6" font-family="Arial" font-weight="bold">-X5  Mini-PC/Gateway (folha 5)</text>
+<rect x="150" y="102" width="120" height="11" fill="none" stroke="#111" stroke-width="0.3"/>
+<text x="152" y="109" font-size="2.1" font-family="Arial">1,2  -PC1 alimentacao DC</text>
+<text x="285" y="100" font-size="2.6" font-family="Arial" font-weight="bold">-PE  Barramento de terra (todas as folhas)</text>
+<rect x="285" y="102" width="120" height="11" fill="none" stroke="#111" stroke-width="0.3"/>
+<text x="287" y="109" font-size="2.1" font-family="Arial">distribuido a -F1,-F2,-F3,-SW1,-PC1,carcaca do quadro</text>
+<rect x="10" y="245" width="395" height="20" fill="none" stroke="#888" stroke-width="0.3" stroke-dasharray="1.5,1"/>
+<text x="13" y="251" font-size="2.1" font-family="Arial">Numeracao de bornes e fios apresentada e preliminar/funcional.</text>
+<text x="13" y="256" font-size="2.1" font-family="Arial">No EPLAN, gerar numeracao automatica de fios (Configuracao > Numeracao de fios) apos montar o projeto real com paginas e formularios do projeto.</text>
+<g class="titleblock" transform="translate(260,262)">
+<rect x="0" y="0" width="155" height="30" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="0" y="0" width="155" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="2.6" font-size="2" fill="#555" font-family="Arial">PROJETO</text>
+<text x="1.5" y="5.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">QUADRO QE1 - CONTROLE DE ACESSO / TRAFEGO</text>
+<rect x="0" y="6" width="100.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="8.6" font-size="2" fill="#555" font-family="Arial">FOLHA</text>
+<text x="1.5" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">LISTA DE BORNES</text>
+<rect x="100.75" y="6" width="54.25" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="102.25" y="8.6" font-size="2" fill="#555" font-family="Arial">TAG</text>
+<text x="102.25" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">=QE1</text>
+<rect x="0" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="14.6" font-size="2" fill="#555" font-family="Arial">DATA</text>
+<text x="1.5" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">24/08/2026</text>
+<rect x="38.75" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="40.25" y="14.6" font-size="2" fill="#555" font-family="Arial">REV.</text>
+<text x="40.25" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">00</text>
+<rect x="77.5" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="79.0" y="14.6" font-size="2" fill="#555" font-family="Arial">ESCALA</text>
+<text x="79.0" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">S/ESC</text>
+<rect x="116.25" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="117.75" y="14.6" font-size="2" fill="#555" font-family="Arial">FOLHA Nº</text>
+<text x="117.75" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">6/7</text>
+<rect x="0" y="18" width="155" height="12" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="20.6" font-size="2" fill="#555" font-family="Arial">ELABORADO</text>
+<text x="1.5" y="23.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">Esquema preliminar gerado digitalmente - conferir e redesenhar em EPLAN P8 antes de fabricacao</text>
+</g>
+</svg>
+</div>
+
+<div class="sheet">
+<svg viewBox="0 0 420 297" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="410" height="287" fill="none" stroke="#111" stroke-width="0.7"/>
+<text x="10" y="14" font-size="6" font-family="Arial" font-weight="bold" fill="#111">LISTA DE MATERIAL (BOM) - PRELIMINAR</text>
+<text x="10" y="20" font-size="3.2" font-family="Arial" fill="#444">Quantidades e referencias sao estimativas; validar conforme corrente real dos circuitos</text>
+<rect x="15" y="32" width="380" height="7" fill="#e5e9f0" stroke="#111" stroke-width="0.3"/>
+<text x="16.5" y="37" font-size="2.3" font-family="Arial" font-weight="bold">TAG</text>
+<text x="56.5" y="37" font-size="2.3" font-family="Arial" font-weight="bold">DESCRICAO</text>
+<text x="191.5" y="37" font-size="2.3" font-family="Arial" font-weight="bold">QTD</text>
+<text x="216.5" y="37" font-size="2.3" font-family="Arial" font-weight="bold">OBSERVACAO</text>
+<rect x="15" y="39" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="44" font-size="2.1" font-family="Arial" font-weight="bold">-Q1</text>
+<text x="56.5" y="44" font-size="2.1" font-family="Arial">Disjuntor bipolar 2P 16A curva C</text>
+<text x="191.5" y="44" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="44" font-size="2" font-family="Arial" fill="#444">Geral CA - protecao entrada 230VAC</text>
+<rect x="15" y="46" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="51" font-size="2.1" font-family="Arial" font-weight="bold">-F0</text>
+<text x="56.5" y="51" font-size="2.1" font-family="Arial">DPS classe II, 230VAC, 1P+N ou 2P</text>
+<text x="191.5" y="51" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="51" font-size="2" font-family="Arial" fill="#444">Protecao contra surtos</text>
+<rect x="15" y="53" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="58" font-size="2.1" font-family="Arial" font-weight="bold">-Q1.1,-Q1.2</text>
+<text x="56.5" y="58" font-size="2.1" font-family="Arial">Disjuntor bipolar 2P 4A curva C</text>
+<text x="191.5" y="58" font-size="2.1" font-family="Arial">2</text>
+<text x="216.5" y="58" font-size="2" font-family="Arial" fill="#444">Protecao entrada -F1 e -F2</text>
+<rect x="15" y="60" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="65" font-size="2.1" font-family="Arial" font-weight="bold">-Q1.3</text>
+<text x="56.5" y="65" font-size="2.1" font-family="Arial">Disjuntor bipolar 2P 2A curva C (ou fusivel)</text>
+<text x="191.5" y="65" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="65" font-size="2" font-family="Arial" fill="#444">Protecao entrada -F3</text>
+<rect x="15" y="67" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="72" font-size="2.1" font-family="Arial" font-weight="bold">-F1</text>
+<text x="56.5" y="72" font-size="2.1" font-family="Arial">Fonte chaveada 230VAC/24VDC, ~60-100W</text>
+<text x="191.5" y="72" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="72" font-size="2" font-family="Arial" fill="#444">Alimentacao CLP/reles/semaforos/QR (24V)</text>
+<rect x="15" y="74" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="79" font-size="2.1" font-family="Arial" font-weight="bold">-F2</text>
+<text x="56.5" y="79" font-size="2.1" font-family="Arial">Fonte chaveada 230VAC/48-54VDC, ~100W</text>
+<text x="191.5" y="79" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="79" font-size="2" font-family="Arial" fill="#444">Alimentacao switch PoE</text>
+<rect x="15" y="81" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="86" font-size="2.1" font-family="Arial" font-weight="bold">-F3</text>
+<text x="56.5" y="86" font-size="2.1" font-family="Arial">Fonte/adaptador dedicado mini-PC</text>
+<text x="191.5" y="86" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="86" font-size="2" font-family="Arial" fill="#444">Conforme modelo do mini-PC/gateway</text>
+<rect x="15" y="88" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="93" font-size="2.1" font-family="Arial" font-weight="bold">-Q2</text>
+<text x="56.5" y="93" font-size="2.1" font-family="Arial">Disjuntor DC bipolar 10A (trilho DIN)</text>
+<text x="191.5" y="93" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="93" font-size="2" font-family="Arial" fill="#444">Geral DC 24V, pos -F1</text>
+<rect x="15" y="95" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="100" font-size="2.1" font-family="Arial" font-weight="bold">-Q2.1</text>
+<text x="56.5" y="100" font-size="2.1" font-family="Arial">Disjuntor/fusivel DC 2A</text>
+<text x="191.5" y="100" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="100" font-size="2" font-family="Arial" fill="#444">Circuito -A1 CLP</text>
+<rect x="15" y="102" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="107" font-size="2.1" font-family="Arial" font-weight="bold">-Q2.2</text>
+<text x="56.5" y="107" font-size="2.1" font-family="Arial">Disjuntor/fusivel DC 2A</text>
+<text x="191.5" y="107" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="107" font-size="2" font-family="Arial" fill="#444">Circuito -K1,-K2,-K3</text>
+<rect x="15" y="109" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="114" font-size="2.1" font-family="Arial" font-weight="bold">-Q2.3</text>
+<text x="56.5" y="114" font-size="2.1" font-family="Arial">Disjuntor/fusivel DC 4A</text>
+<text x="191.5" y="114" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="114" font-size="2" font-family="Arial" fill="#444">Circuito semaforos 24V</text>
+<rect x="15" y="116" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="121" font-size="2.1" font-family="Arial" font-weight="bold">-Q2.4</text>
+<text x="56.5" y="121" font-size="2.1" font-family="Arial">Disjuntor/fusivel DC 1A</text>
+<text x="191.5" y="121" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="121" font-size="2" font-family="Arial" fill="#444">Circuito leitor QR (opcao 24V)</text>
+<rect x="15" y="123" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="128" font-size="2.1" font-family="Arial" font-weight="bold">-Q3</text>
+<text x="56.5" y="128" font-size="2.1" font-family="Arial">Disjuntor DC bipolar 4A</text>
+<text x="191.5" y="128" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="128" font-size="2" font-family="Arial" fill="#444">Geral DC 48/54V, pos -F2</text>
+<rect x="15" y="130" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="135" font-size="2.1" font-family="Arial" font-weight="bold">-K1,-K2,-K3</text>
+<text x="56.5" y="135" font-size="2.1" font-family="Arial">Rele de interface 24VDC, contato 1NA+1NF (min.)</text>
+<text x="191.5" y="135" font-size="2.1" font-family="Arial">3</text>
+<text x="216.5" y="135" font-size="2" font-family="Arial" fill="#444">Reles solicitados no escopo</text>
+<rect x="15" y="137" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="142" font-size="2.1" font-family="Arial" font-weight="bold">-A1</text>
+<text x="56.5" y="142" font-size="2.1" font-family="Arial">CLP / controlador (modelo a definir)</text>
+<text x="191.5" y="142" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="142" font-size="2" font-family="Arial" fill="#444">Nao especificado pelo cliente - confirmar</text>
+<rect x="15" y="144" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="149" font-size="2.1" font-family="Arial" font-weight="bold">-SW1</text>
+<text x="56.5" y="149" font-size="2.1" font-family="Arial">Switch PoE (num. portas conforme projeto)</text>
+<text x="191.5" y="149" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="149" font-size="2" font-family="Arial" fill="#444">Alimenta cameras/leitor via Ethernet</text>
+<rect x="15" y="151" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="156" font-size="2.1" font-family="Arial" font-weight="bold">-PC1</text>
+<text x="56.5" y="156" font-size="2.1" font-family="Arial">Mini-PC / gateway (modelo a definir)</text>
+<text x="191.5" y="156" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="156" font-size="2" font-family="Arial" fill="#444">Nao especificado pelo cliente - confirmar</text>
+<rect x="15" y="158" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="163" font-size="2.1" font-family="Arial" font-weight="bold">-X0..-X5</text>
+<text x="56.5" y="163" font-size="2.1" font-family="Arial">Bornes de passagem, trilho DIN 35mm</text>
+<text x="191.5" y="163" font-size="2.1" font-family="Arial">conf. projeto</text>
+<text x="216.5" y="163" font-size="2" font-family="Arial" fill="#444">Ver lista de bornes, folha 6</text>
+<rect x="15" y="165" width="380" height="7" fill="none" stroke="#ccc" stroke-width="0.25"/>
+<text x="16.5" y="170" font-size="2.1" font-family="Arial" font-weight="bold">QE1</text>
+<text x="56.5" y="170" font-size="2.1" font-family="Arial">Quadro/gabinete metalico com trilho DIN e canaletas</text>
+<text x="191.5" y="170" font-size="2.1" font-family="Arial">1</text>
+<text x="216.5" y="170" font-size="2" font-family="Arial" fill="#444">Dimensionar conforme layout final</text>
+<g class="titleblock" transform="translate(260,262)">
+<rect x="0" y="0" width="155" height="30" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="0" y="0" width="155" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="2.6" font-size="2" fill="#555" font-family="Arial">PROJETO</text>
+<text x="1.5" y="5.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">QUADRO QE1 - CONTROLE DE ACESSO / TRAFEGO</text>
+<rect x="0" y="6" width="100.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="8.6" font-size="2" fill="#555" font-family="Arial">FOLHA</text>
+<text x="1.5" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">LISTA DE MATERIAL (BOM)</text>
+<rect x="100.75" y="6" width="54.25" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="102.25" y="8.6" font-size="2" fill="#555" font-family="Arial">TAG</text>
+<text x="102.25" y="11.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">=QE1</text>
+<rect x="0" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="14.6" font-size="2" fill="#555" font-family="Arial">DATA</text>
+<text x="1.5" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">24/08/2026</text>
+<rect x="38.75" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="40.25" y="14.6" font-size="2" fill="#555" font-family="Arial">REV.</text>
+<text x="40.25" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">00</text>
+<rect x="77.5" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="79.0" y="14.6" font-size="2" fill="#555" font-family="Arial">ESCALA</text>
+<text x="79.0" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">S/ESC</text>
+<rect x="116.25" y="12" width="38.75" height="6" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="117.75" y="14.6" font-size="2" fill="#555" font-family="Arial">FOLHA Nº</text>
+<text x="117.75" y="17.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">7/7</text>
+<rect x="0" y="18" width="155" height="12" fill="none" stroke="#111" stroke-width="0.25"/>
+<text x="1.5" y="20.6" font-size="2" fill="#555" font-family="Arial">ELABORADO</text>
+<text x="1.5" y="23.2" font-size="2.5" fill="#111" font-family="Arial" font-weight="bold">Esquema preliminar gerado digitalmente - conferir e redesenhar em EPLAN P8 antes de fabricacao</text>
+</g>
+</svg>
+</div>
+
+</body></html>
