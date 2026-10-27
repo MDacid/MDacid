@@ -16,10 +16,11 @@ cobre `#C47A45`, branco `#F5F5F5`, cinza `#6B6F73`; fonte Montserrat.
 - `assets/` — logótipo original, versões recortadas para o cartão, fonte e padrão topográfico.
 - `scripts/` — `preparar_assets.py` (recorta o logótipo) e `gerar.js` (gera PDF e PNG).
 
-## Antes de imprimir
+## Dados
 
-Os contactos no verso são **exemplos** (procurar `EDITAR` no HTML):
-nome, função, telefone, email, site e Instagram. Depois de editar:
+Verso: **Mauro Dinis** · Piloto de Drone · FPV · +351 920 065 394 ·
+mavisky.fpv@gmail.com · TikTok @mavisky1. Para alterar, editar o HTML
+(procurar `EDITAR`) e correr:
 
 ```
 node scripts/gerar.js

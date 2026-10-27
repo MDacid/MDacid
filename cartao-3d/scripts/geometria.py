@@ -177,6 +177,44 @@ class _FlatPen(BasePen):
     _endPath = _closePath
 
 
+def _enrolamento(contorno, x, y):
+    """Número de enrolamento de (x, y) em relação a um contorno fechado (pode cruzar-se)."""
+    P = np.asarray(contorno, float)
+    Q = np.roll(P, -1, axis=0)
+    cruz = (Q[:, 0] - P[:, 0]) * (y - P[:, 1]) - (x - P[:, 0]) * (Q[:, 1] - P[:, 1])
+    sobe = (P[:, 1] <= y) & (Q[:, 1] > y) & (cruz > 0)
+    desce = (P[:, 1] > y) & (Q[:, 1] <= y) & (cruz < 0)
+    return int(sobe.sum() - desce.sum())
+
+
+def _glifo(contornos):
+    """Contornos TrueType -> polígono pela regra de preenchimento nonzero.
+    Divide o glifo nas faces formadas por todos os contornos e preenche as faces com
+    número de enrolamento != 0. Lida com contornos sobrepostos das fontes variáveis
+    (ex.: "4", "A", "R" da Montserrat), que um XOR ou uma subtração simples partiriam."""
+    from shapely.geometry import LinearRing
+    from shapely.ops import polygonize
+    cs = []
+    for c in contornos:
+        if len(c) < 3:
+            continue
+        anel = LinearRing(c)
+        p = Polygon(c)
+        if p.area < 1e-9:
+            continue
+        cs.append((p if p.is_valid else p.buffer(0), -1 if anel.is_ccw else 1, anel))
+    if not cs:
+        return Polygon()
+    linhas = unary_union([a for _, _, a in cs])
+    cheio = []
+    for face in polygonize(linhas):
+        pt = face.representative_point()
+        w = sum(_enrolamento(c, pt.x, pt.y) for c in contornos if len(c) >= 3)
+        if w != 0:
+            cheio.append(face)
+    return unary_union(cheio).buffer(0) if cheio else Polygon()
+
+
 _FONT_CACHE = {}
 
 
@@ -206,9 +244,7 @@ def texto(s, peso, altura_maiusc, tracking=0.0):
             gname = cmap.get(ord("?"))
         pen = _FlatPen(gs)
         gs[gname].draw(pen)
-        g = Polygon()
-        for c in pen.contornos:
-            g = g.symmetric_difference(Polygon(c).buffer(0))
+        g = _glifo(pen.contornos)
         if ch in ENGROSSAR_GLIFO and not g.is_empty:
             g = g.buffer(ENGROSSAR_GLIFO[ch] / esc, join_style=2)
         if not g.is_empty:
@@ -250,6 +286,13 @@ def _icone(nome, t=3.4):
         g = ext.difference(ext.buffer(-w))
         anel = Point(0, 0).buffer(0.80, quad_segs=32)
         return g.union(anel.difference(anel.buffer(-0.46)))
+    if nome == "tiktok":  # nota musical do TikTok
+        haste = LineString([(0.35, h - 0.25), (0.35, -0.55)]).buffer(w / 2, cap_style=2)
+        cab = Point(-0.42, -0.55).buffer(0.77 + w / 2, quad_segs=32)
+        cab = cab.difference(Point(-0.42, -0.55).buffer(0.77 - w / 2, quad_segs=32))
+        cab = cab.difference(box(-0.42, -0.55, 2, 2))  # só 3/4 do círculo, abre para a haste
+        bandeira = LineString([(0.35, h - 0.25), (0.55, h - 0.75), (0.95, h - 1.05), (1.45, h - 1.2)]).buffer(w / 2, join_style=1)
+        return unary_union([haste, cab, bandeira, Point(0.35, -0.55).buffer(w / 2)])
     raise ValueError(nome)
 
 
@@ -268,11 +311,6 @@ def construir(dados_path=os.path.join(RAIZ, "dados.json")):
     dados = json.load(open(dados_path, encoding="utf-8"))
     branco_m, cobre_m = _mascaras()
 
-    # zona útil acima do rodapé
-    Y_RODAPE = 4.6           # linha de base da tagline
-    Y0, Y1 = 10.0, CARD_H - 4.0
-    YC = (Y0 + Y1) / 2
-
     # --- logótipo (px do recorte) -----------------------------------------
     m_letra = _tracar(branco_m, (320, 720), (95, 395))
     minx, _, maxx, _ = m_letra.bounds
@@ -284,33 +322,59 @@ def construir(dados_path=os.path.join(RAIZ, "dados.json")):
 
     bx0, by0, bx1, by1 = unary_union([logo_b, logo_c]).bounds
     s = LARG_LOGO / (bx1 - bx0)
-    X_LOGO = 4.0 + LARG_LOGO / 2
-    topo = YC + (by1 - by0) * s / 2
 
-    def px2mm(g):
+    # --- colunas (X) ------------------------------------------------------
+    X_LOGO = 4.0 + LARG_LOGO / 2
+    X_DIV = 4.0 + LARG_LOGO + 3.0
+    X_TXT = X_DIV + 2.8
+    larg_max = CARD_W - 3.4 - X_TXT
+    CAP_NOME, CAP_C, ICON, GAP_I, PASSO = 3.0, 2.2, 3.3, 1.1, 5.0
+
+    def px2mm(g, topo):
         g = affinity.translate(g, -(bx0 + bx1) / 2, -by0)
         g = affinity.scale(g, s, -s, origin=(0, 0))
         return affinity.translate(g, X_LOGO, topo)
 
-    branco = [px2mm(logo_b)]
-    cobre = [px2mm(logo_c)]
+    # contactos: os que não cabem na coluna passam para uma faixa na largura toda
+    # (por cima da tagline), em vez de encolherem abaixo do tamanho imprimível
+    coluna, faixa = [], []
+    for k in ("telefone", "email", "site", "instagram", "tiktok"):
+        if not dados.get(k):
+            continue
+        t, w = texto(dados[k], "Bold", CAP_C, tracking=0.02)
+        (coluna if w <= larg_max - ICON - GAP_I else faixa).append((k, t, w))
+
+    # --- linhas verticais (Y) --------------------------------------------
+    Y_RODAPE = 4.6                         # linha de base da tagline
+    PASSO_FAIXA = 5.6
+    Y0 = 10.0 + PASSO_FAIXA * len(faixa)   # zona útil acima da faixa e do rodapé
+    Y1 = CARD_H - 4.0
+    YC = (Y0 + Y1) / 2
+
+    # --- logótipo ------------------------------------------------------------
+    topo = YC + (by1 - by0) * s / 2
+    branco = [px2mm(logo_b, topo)]
+    cobre = [px2mm(logo_c, topo)]
 
     # --- rodapé: tagline em toda a largura -------------------------------
     tag, tag_w = texto(dados["tagline"], "Bold", CAP_TAG, tracking=0.16)
     tag, k = _ajustar(tag, tag_w, CARD_W - 8.0, "tagline")
     branco.append(colocar(tag, CARD_W / 2, Y_RODAPE, "centro", tag_w * k))
 
+    # --- faixa de contactos largos (centrados) ---------------------------
+    for n, (ic, t, w) in enumerate(faixa):
+        t, k = _ajustar(t, w, CARD_W - 8.0 - ICON - GAP_I, ic)
+        larg = ICON + GAP_I + w * k
+        x0 = CARD_W / 2 - larg / 2
+        yc = Y_RODAPE + CAP_TAG + 3.6 + n * PASSO_FAIXA + CAP_C / 2
+        cobre.append(affinity.translate(_icone(ic, ICON), x0 + ICON / 2, yc))
+        branco.append(colocar(t, x0 + ICON + GAP_I, yc - CAP_C * k / 2))
+
     # --- divisória ----------------------------------------------------------
-    X_DIV = 4.0 + LARG_LOGO + 3.0
     cobre.append(LineString([(X_DIV, Y0 + 2.0), (X_DIV, Y1 - 2.0)]).buffer(0.32, cap_style=1))
 
     # --- bloco de contactos -------------------------------------------------
-    X_TXT = X_DIV + 2.8
-    larg_max = CARD_W - 3.4 - X_TXT
-    CAP_NOME, CAP_C, ICON, GAP_I, PASSO = 3.0, 2.2, 3.3, 1.1, 5.0
-    linhas = [("telefone", dados["telefone"]), ("email", dados["email"]),
-              ("site", dados["site"]), ("instagram", dados["instagram"])]
-    altura = CAP_NOME + 2.3 + CAP_FUNCAO + 4.4 + (len(linhas) - 1) * PASSO + ICON / 2
+    altura = CAP_NOME + 2.3 + CAP_FUNCAO + ((4.4 + (len(coluna) - 1) * PASSO + ICON / 2) if coluna else 0)
     y = YC + altura / 2 - CAP_NOME
     nome, w = texto(dados["nome"], "Bold", CAP_NOME, tracking=0.01)
     nome, _ = _ajustar(nome, w, larg_max, "nome")
@@ -320,11 +384,9 @@ def construir(dados_path=os.path.join(RAIZ, "dados.json")):
     funcao, _ = _ajustar(funcao, w, larg_max, "funcao")
     cobre.append(colocar(funcao, X_TXT, y))
     y -= 4.4 + ICON / 2 - CAP_FUNCAO / 2
-    for ic, txt in linhas:
+    for ic, t, w in coluna:
         cobre.append(affinity.translate(_icone(ic, ICON), X_TXT + ICON / 2, y))
-        t, w = texto(txt, "Bold", CAP_C, tracking=0.02)
-        t, k = _ajustar(t, w, larg_max - ICON - GAP_I, ic)
-        branco.append(colocar(t, X_TXT + ICON + GAP_I, y - CAP_C * k / 2))
+        branco.append(colocar(t, X_TXT + ICON + GAP_I, y - CAP_C / 2))
         y -= PASSO
 
     base = rounded_rect(0, 0, CARD_W, CARD_H, CARD_R)

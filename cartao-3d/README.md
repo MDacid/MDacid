@@ -28,8 +28,8 @@ Resultado:
 
 | G-code | preto | cobre | branco | **total** | tempo* |
 |---|---|---|---|---|---|
-| 1 cartão | 3,46 g | 0,63 g | 0,64 g | **4,7 g** | ~12 min |
-| 12 cartões (3×4) | 41,1 g | 3,0 g | 2,1 g | **46,3 g = 3,9 g/cartão** | ~2 h 23 |
+| 1 cartão | 3,46 g | 0,62 g | 0,64 g | **4,7 g** | ~11 min |
+| 12 cartões (3×4) | 41,1 g | 2,9 g | 2,1 g | **46,1 g = 3,8 g/cartão** | ~2 h 13 |
 
 \* estimativa do fatiador, sem contar as 2 trocas (~2–3 min cada).
 **A placa de 12 é a mais económica**: as 2 purgas são divididas por 12 cartões.
@@ -45,7 +45,7 @@ Resultado:
 | `fusion360/cartao-mavisky-3cores.step` | **Fusion 360**: 3 corpos sólidos coloridos |
 | `fusion360/cartao-mavisky-camadas.dxf` | **Fusion 360**: contornos 2D editáveis, 1 layer por cor |
 | `stl/cartao-mavisky-{1-base-preto,2-cobre,3-branco}.stl` | malhas por cor (para qualquer fatiador) |
-| `dados.json` | nome, função, contactos (editar aqui) |
+| `dados.json` | nome, função e contactos (Mauro Dinis, telefone, email, TikTok) |
 | `previews/` | vista de cima e simulação do G-code |
 | `slicer/` | configuração usada, perfis oficiais QIDI, projetos PrusaSlicer |
 | `scripts/` | gerador completo (geometria → STEP/STL/DXF → G-code → projeto QIDI) |
@@ -101,8 +101,10 @@ python3 scripts/gerar_tudo.py
 ```
 
 O script regenera tudo: STEP, DXF, STL, os 2 G-codes, os 2 projetos QIDI Studio e as
-pré-visualizações. Se um texto for comprido demais para o espaço, avisa e encolhe-o.
-Nesse caso, mais vale encurtá-lo, para manter as letras imprimíveis.
+pré-visualizações. Contactos disponíveis: `telefone`, `email`, `site`, `instagram`, `tiktok`;
+só aparecem os que estiverem preenchidos. Um contacto comprido demais para a coluna
+(como o email) passa automaticamente para uma faixa na largura toda, por cima da tagline,
+em vez de encolher. Se mesmo assim não couber, o script avisa.
 
 ## Regras de desenho para o bico de 0,4 mm
 
@@ -110,9 +112,12 @@ Nesse caso, mais vale encurtá-lo, para manter as letras imprimíveis.
   de ~0,44 mm (medido na fonte), por isso as letras não se fecham.
 - "@" em Montserrat Black; "t", "+" e "f" ligeiramente engrossados (têm braços curtos
   que o fatiador perdia).
+- Os glifos são preenchidos pela regra *nonzero* (número de enrolamento), como num
+  renderizador de fontes: a Montserrat variável tem contornos sobrepostos e que se
+  cruzam ("4", "A", "P", "R").
 - Arachne com tamanho mínimo de pormenor 10% e largura mínima de linha 60%: valores
   escolhidos por medição, por terem a melhor cobertura do texto pequeno
-  (91% de cobertura, 2% de excesso).
+  (92% de cobertura, 2% de excesso).
 - O M e "MAVISKY" vêm traçados do logótipo original. As partes do drone foram
   redesenhadas em vetor limpo, com traços ≥ 0,5 mm, porque no logótipo são um render
   fotorrealista.
