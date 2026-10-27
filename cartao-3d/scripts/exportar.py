@@ -14,7 +14,7 @@ import ezdxf
 import trimesh
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from geometria import RAIZ, as_polys, construir  # noqa: E402
+from geometria import SAIDA, as_polys, construir, prefixo  # noqa: E402
 
 Z_BASE, Z_COBRE, Z_BRANCO = 0.6, 1.0, 1.4
 
@@ -91,24 +91,25 @@ def malha(solid, caminho):
     return trimesh.load(caminho)
 
 
-def exportar(g, pasta=RAIZ):
+def exportar(g, pasta=SAIDA):
+    nome_f = prefixo()
     peg = pegadas(g)
     os.makedirs(os.path.join(pasta, "fusion360"), exist_ok=True)
     os.makedirs(os.path.join(pasta, "stl"), exist_ok=True)
 
     # STEP: montagem com 3 corpos coloridos
-    assy = cq.Assembly(name="cartao_mavisky_3cores")
+    assy = cq.Assembly(name=nome_f.replace("-", "_") + "_3cores")
     solidos = {}
     for nome, _, cor, z0, z1 in CORPOS:
         solidos[nome] = solido(peg[nome], z0, z1)
         assy.add(solidos[nome], name=nome.replace("-", "_"), color=cq.Color(*cor))
-    step = os.path.join(pasta, "fusion360", "cartao-mavisky-3cores.step")
+    step = os.path.join(pasta, "fusion360", f"{nome_f}-3cores.step")
     assy.export(step)
 
     # STL por cor (também servem para o QIDI Studio)
     malhas = {}
     for nome, *_ in CORPOS:
-        malhas[nome] = malha(solidos[nome], os.path.join(pasta, "stl", f"cartao-mavisky-{nome}.stl"))
+        malhas[nome] = malha(solidos[nome], os.path.join(pasta, "stl", f"{nome_f}-{nome}.stl"))
 
     # DXF: uma camada por cor (esboço editável no Fusion)
     doc = ezdxf.new("R2010", setup=True)
@@ -120,7 +121,7 @@ def exportar(g, pasta=RAIZ):
         for p in as_polys(peg[nome]):
             for ring in [p.exterior, *p.interiors]:
                 doc.modelspace().add_lwpolyline(list(ring.coords)[:-1], close=True, dxfattribs={"layer": layer})
-    doc.saveas(os.path.join(pasta, "fusion360", "cartao-mavisky-camadas.dxf"))
+    doc.saveas(os.path.join(pasta, "fusion360", f"{nome_f}-camadas.dxf"))
     return malhas
 
 

@@ -92,6 +92,12 @@ desligar a *torre de purga*.
 - Para mudar só o texto (nome, telefone…) é mais rápido usar o gerador (abaixo),
   que já aplica as regras de legibilidade.
 
+## Outras marcas
+
+O mesmo gerador faz o cartão **MAVI 3D PRINT**, em `mavi3dprint/` (ver o README dessa pasta):
+`python3 scripts/gerar_tudo.py mavi3dprint`. Cada marca é uma pasta com o seu
+`dados.json` (`"marca"` escolhe o logótipo e `"ficheiro"` o prefixo dos ficheiros).
+
 ## Mudar nome e contactos
 
 Editar `dados.json` e correr na pasta `cartao-3d`:

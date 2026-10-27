@@ -14,7 +14,6 @@ def render(g, saida, ppm=24):
     W, H = int(CARD_W * ppm), int(CARD_H * ppm)
     pad = int(3 * ppm)
     im = Image.new("RGB", (W + 2 * pad, H + 2 * pad), (232, 232, 228))
-    d = ImageDraw.Draw(im)
 
     def xy(pts):
         return [(pad + x * ppm, pad + (CARD_H - y) * ppm) for x, y in pts]

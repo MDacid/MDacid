@@ -1,0 +1,10 @@
+{
+  "_nota": "Editar estes campos e correr (na pasta cartao-3d): python3 scripts/gerar_tudo.py mavi3dprint. Contactos vazios ou ausentes não aparecem; texto entre [ ] sai a cobre.",
+  "marca": "mavi3dprint",
+  "ficheiro": "cartao-mavi3dprint",
+  "nome": "Mauro Dinis",
+  "funcao": "IMPRESSÃO 3D",
+  "telefone": "+351 920 065 394",
+  "site": "www.mavi[3dprint].pt",
+  "tagline": ""
+}

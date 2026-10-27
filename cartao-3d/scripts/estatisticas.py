@@ -6,7 +6,7 @@ DENS, AREA = 1.24, 3.14159265 * 0.875 ** 2
 
 
 def stats(path):
-    tool, e, z = 0, [0.0, 0.0, 0.0], 0.0
+    tool, e = 0, [0.0, 0.0, 0.0]
     tempo = None
     for ln in open(path, encoding="utf-8"):
         if ln.startswith("; estimated printing time (normal mode)"):

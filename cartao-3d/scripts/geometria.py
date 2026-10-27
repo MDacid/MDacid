@@ -21,7 +21,7 @@ from fontTools.pens.basePen import BasePen
 from fontTools.ttLib import TTFont
 from scipy import ndimage
 from shapely import affinity
-from shapely.geometry import LineString, MultiPolygon, Point, Polygon, box
+from shapely.geometry import LineString, Point, Polygon, box
 from shapely.ops import unary_union
 from skimage import measure
 
@@ -29,6 +29,14 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(AQUI)
 LOGO = os.path.join(RAIZ, "..", "cartao-visita", "assets", "logo-mavisky-original.jpg")
 FONTES = os.path.join(RAIZ, "fontes")
+# pasta do cartão (dados.json + ficheiros gerados); por omissão o cartão MAVISKY
+SAIDA = os.path.abspath(os.environ.get("CARTAO_SAIDA", RAIZ))
+
+
+def prefixo():
+    """Prefixo dos ficheiros gerados (campo "ficheiro" do dados.json)."""
+    with open(os.path.join(SAIDA, "dados.json"), encoding="utf-8") as f:
+        return json.load(f).get("ficheiro", "cartao-mavisky")
 
 # ---------------------------------------------------------------- formato
 CARD_W, CARD_H, CARD_R = 85.0, 55.0, 3.0
@@ -255,6 +263,21 @@ def texto(s, peso, altura_maiusc, tracking=0.0):
     return geo, x * esc
 
 
+def texto_partes(s, peso, altura_maiusc, tracking=0.0):
+    """Texto com troços a cobre marcados entre [ ]. Devolve (branco, cobre, largura)."""
+    import re
+    partes = [(m.group(1) or m.group(2), bool(m.group(1))) for m in re.finditer(r"\[([^\]]*)\]|([^\[]+)", s)]
+    f = _font(peso)
+    esc = altura_maiusc / (f["OS/2"].sCapHeight or 700)
+    passo_tracking = tracking * f["head"].unitsPerEm * esc
+    x, b, c = 0.0, [], []
+    for txt, a_cobre in partes:
+        g, w = texto(txt, peso, altura_maiusc, tracking)
+        (c if a_cobre else b).append(affinity.translate(g, x, 0))
+        x += w + passo_tracking
+    return unary_union(b) if b else Polygon(), unary_union(c) if c else Polygon(), x - passo_tracking
+
+
 def colocar(geo, x, y, alinhar="esq", largura=None):
     if alinhar == "centro":
         x -= largura / 2
@@ -305,70 +328,82 @@ def _ajustar(geo, largura, larg_max, nome):
     return affinity.scale(geo, k, k, origin=(0, 0)), k
 
 
-def construir(dados_path=os.path.join(RAIZ, "dados.json")):
+def construir(dados_path=None):
     """Layout do cartão. Regras de texto para bico 0.4 mm:
     Montserrat Bold, maiúsculas >= 2.2 mm -> hastes ~0.49 mm e vãos ~0.44 mm."""
-    dados = json.load(open(dados_path, encoding="utf-8"))
-    branco_m, cobre_m = _mascaras()
+    dados = json.load(open(dados_path or os.path.join(SAIDA, "dados.json"), encoding="utf-8"))
+    marca = dados.get("marca", "mavisky")
 
-    # --- logótipo (px do recorte) -----------------------------------------
-    m_letra = _tracar(branco_m, (320, 720), (95, 395))
-    minx, _, maxx, _ = m_letra.bounds
-    eixo = (minx + maxx) / 2
-    mavi = _tracar(branco_m, (0, 568), (400, 545))
-    sky = _tracar(cobre_m, (568, 1035), (400, 545))
-    logo_b = unary_union([m_letra, mavi, _drone_branco()])
-    logo_c = unary_union([sky, _drone_cobre(eixo)]).difference(m_letra)  # M por cima dos braços
-
+    # --- logótipo em "px" (Y para baixo) ---------------------------------
+    if marca == "mavi3dprint":
+        from logo_mavi3d import desenhar
+        logo_b, logo_c = desenhar()
+    else:
+        branco_m, cobre_m = _mascaras()
+        m_letra = _tracar(branco_m, (320, 720), (95, 395))
+        minx, _, maxx, _ = m_letra.bounds
+        eixo = (minx + maxx) / 2
+        mavi = _tracar(branco_m, (0, 568), (400, 545))
+        sky = _tracar(cobre_m, (568, 1035), (400, 545))
+        logo_b = unary_union([m_letra, mavi, _drone_branco()])
+        logo_c = unary_union([sky, _drone_cobre(eixo)]).difference(m_letra)  # M por cima dos braços
     bx0, by0, bx1, by1 = unary_union([logo_b, logo_c]).bounds
-    s = LARG_LOGO / (bx1 - bx0)
 
-    # --- colunas (X) ------------------------------------------------------
-    X_LOGO = 4.0 + LARG_LOGO / 2
-    X_DIV = 4.0 + LARG_LOGO + 3.0
+    CAP_NOME, CAP_C, ICON, GAP_I, PASSO = 3.0, 2.2, 3.3, 1.1, 5.0
+    # contactos: os que não cabem na coluna passam para uma faixa na largura toda,
+    # em vez de encolherem abaixo do tamanho imprimível (coluna avaliada com o logo na largura máxima)
+    larg_col = CARD_W - 3.4 - (4.0 + LARG_LOGO + 5.8)
+    coluna, faixa = [], []
+    for k in ("telefone", "email", "site", "instagram", "tiktok"):
+        if not dados.get(k):
+            continue
+        b, c, w = texto_partes(dados[k], "Bold", CAP_C, tracking=0.02)
+        (coluna if w <= larg_col - ICON - GAP_I else faixa).append((k, b, c, w))
+
+    # --- linhas verticais (Y) --------------------------------------------
+    tem_tag = bool(dados.get("tagline"))
+    Y_RODAPE = 4.6                          # linha de base da tagline
+    PASSO_FAIXA = 5.6
+    base_faixa = (Y_RODAPE + CAP_TAG + 3.6) if tem_tag else 4.8
+    Y0 = (10.0 if tem_tag else 4.6) + PASSO_FAIXA * len(faixa)
+    Y1 = CARD_H - 4.0
+    YC = (Y0 + Y1) / 2
+
+    # --- logótipo: largura máx. LARG_LOGO, altura máx. a zona útil ---------
+    s = min(LARG_LOGO / (bx1 - bx0), (Y1 - Y0 - 1.0) / (by1 - by0))
+    larg_logo = (bx1 - bx0) * s
+    X_LOGO = 4.0 + larg_logo / 2
+    X_DIV = 4.0 + larg_logo + 3.0
     X_TXT = X_DIV + 2.8
     larg_max = CARD_W - 3.4 - X_TXT
-    CAP_NOME, CAP_C, ICON, GAP_I, PASSO = 3.0, 2.2, 3.3, 1.1, 5.0
 
     def px2mm(g, topo):
         g = affinity.translate(g, -(bx0 + bx1) / 2, -by0)
         g = affinity.scale(g, s, -s, origin=(0, 0))
         return affinity.translate(g, X_LOGO, topo)
 
-    # contactos: os que não cabem na coluna passam para uma faixa na largura toda
-    # (por cima da tagline), em vez de encolherem abaixo do tamanho imprimível
-    coluna, faixa = [], []
-    for k in ("telefone", "email", "site", "instagram", "tiktok"):
-        if not dados.get(k):
-            continue
-        t, w = texto(dados[k], "Bold", CAP_C, tracking=0.02)
-        (coluna if w <= larg_max - ICON - GAP_I else faixa).append((k, t, w))
-
-    # --- linhas verticais (Y) --------------------------------------------
-    Y_RODAPE = 4.6                         # linha de base da tagline
-    PASSO_FAIXA = 5.6
-    Y0 = 10.0 + PASSO_FAIXA * len(faixa)   # zona útil acima da faixa e do rodapé
-    Y1 = CARD_H - 4.0
-    YC = (Y0 + Y1) / 2
-
-    # --- logótipo ------------------------------------------------------------
     topo = YC + (by1 - by0) * s / 2
     branco = [px2mm(logo_b, topo)]
     cobre = [px2mm(logo_c, topo)]
 
     # --- rodapé: tagline em toda a largura -------------------------------
-    tag, tag_w = texto(dados["tagline"], "Bold", CAP_TAG, tracking=0.16)
-    tag, k = _ajustar(tag, tag_w, CARD_W - 8.0, "tagline")
-    branco.append(colocar(tag, CARD_W / 2, Y_RODAPE, "centro", tag_w * k))
+    if tem_tag:
+        tag, tag_w = texto(dados["tagline"], "Bold", CAP_TAG, tracking=0.16)
+        tag, k = _ajustar(tag, tag_w, CARD_W - 8.0, "tagline")
+        branco.append(colocar(tag, CARD_W / 2, Y_RODAPE, "centro", tag_w * k))
 
     # --- faixa de contactos largos (centrados) ---------------------------
-    for n, (ic, t, w) in enumerate(faixa):
-        t, k = _ajustar(t, w, CARD_W - 8.0 - ICON - GAP_I, ic)
+    for n, (ic, b, c, w) in enumerate(faixa):
+        k = min(1.0, (CARD_W - 8.0 - ICON - GAP_I) / w)
+        if k < 0.97:
+            print(f"  aviso: '{ic}' encolhido para {k:.0%} para caber — encurte o texto", file=sys.stderr)
         larg = ICON + GAP_I + w * k
         x0 = CARD_W / 2 - larg / 2
-        yc = Y_RODAPE + CAP_TAG + 3.6 + n * PASSO_FAIXA + CAP_C / 2
+        yc = base_faixa + n * PASSO_FAIXA + CAP_C / 2
         cobre.append(affinity.translate(_icone(ic, ICON), x0 + ICON / 2, yc))
-        branco.append(colocar(t, x0 + ICON + GAP_I, yc - CAP_C * k / 2))
+        for geo, lista in ((b, branco), (c, cobre)):
+            if not geo.is_empty:
+                lista.append(colocar(affinity.scale(geo, k, k, origin=(0, 0)), x0 + ICON + GAP_I, yc - CAP_C * k / 2))
 
     # --- divisória ----------------------------------------------------------
     cobre.append(LineString([(X_DIV, Y0 + 2.0), (X_DIV, Y1 - 2.0)]).buffer(0.32, cap_style=1))
@@ -384,9 +419,11 @@ def construir(dados_path=os.path.join(RAIZ, "dados.json")):
     funcao, _ = _ajustar(funcao, w, larg_max, "funcao")
     cobre.append(colocar(funcao, X_TXT, y))
     y -= 4.4 + ICON / 2 - CAP_FUNCAO / 2
-    for ic, t, w in coluna:
+    for ic, b, c, w in coluna:
         cobre.append(affinity.translate(_icone(ic, ICON), X_TXT + ICON / 2, y))
-        branco.append(colocar(t, X_TXT + ICON + GAP_I, y - CAP_C / 2))
+        for geo, lista in ((b, branco), (c, cobre)):
+            if not geo.is_empty:
+                lista.append(colocar(geo, X_TXT + ICON + GAP_I, y - CAP_C / 2))
         y -= PASSO
 
     base = rounded_rect(0, 0, CARD_W, CARD_H, CARD_R)

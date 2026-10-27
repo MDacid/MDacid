@@ -18,13 +18,13 @@ import zipfile
 import trimesh
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from geometria import CARD_H, CARD_W, RAIZ  # noqa: E402
+from geometria import CARD_H, CARD_W, RAIZ, SAIDA, prefixo  # noqa: E402
 
 INI = os.path.join(RAIZ, "slicer", "qidi-plus4-box-3cores.ini")
-STL = os.path.join(RAIZ, "stl")
-PARTES = [("base preto", "cartao-mavisky-1-base-preto.stl", 1),
-          ("cobre", "cartao-mavisky-2-cobre.stl", 2),
-          ("branco", "cartao-mavisky-3-branco.stl", 3)]
+STL = os.path.join(SAIDA, "stl")
+PARTES = [("base preto", f"{prefixo()}-1-base-preto.stl", 1),
+          ("cobre", f"{prefixo()}-2-cobre.stl", 2),
+          ("branco", f"{prefixo()}-3-branco.stl", 3)]
 
 BED = 305.0
 # Volumes de purga (mm3) por troca [de][para], índices 0..2 = preto, cobre, branco.
@@ -64,7 +64,7 @@ def montar_3mf(caminho, posicoes):
     model = ('<?xml version="1.0" encoding="UTF-8"?>\n'
              '<model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02" '
              'xmlns:slic3rpe="http://schemas.slic3r.org/3mf/2017/06">\n'
-             '<metadata name="slic3rpe:Version3mf">1</metadata>\n<metadata name="Title">Cartao MAVISKY 3 cores</metadata>\n'
+             '<metadata name="slic3rpe:Version3mf">1</metadata>\n' f'<metadata name="Title">{prefixo()} 3 cores</metadata>\n'
              f'<resources><object id="1" type="model"><mesh><vertices>{"".join(verts)}</vertices>'
              f'<triangles>{"".join(tris)}</triangles></mesh></object></resources>\n'
              f'<build>{items}</build>\n</model>\n')
@@ -78,7 +78,7 @@ def montar_3mf(caminho, posicoes):
         '</volume>' for n, e, a, b in vols)
     cfg = ('<?xml version="1.0" encoding="UTF-8"?>\n<config>\n'
            f'<object id="1" instances_count="{len(posicoes)}">'
-           '<metadata type="object" key="name" value="cartao-mavisky"/>'
+           f'<metadata type="object" key="name" value="{prefixo()}"/>'
            '<metadata type="object" key="extruder" value="1"/>'
            f'{vol_xml}</object>\n</config>\n')
     ct = ('<?xml version="1.0" encoding="UTF-8"?>\n<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
@@ -247,7 +247,7 @@ def miniaturas(gcode_path, posicoes, cartao_png):
 
 def fatiar(nome, posicoes, pasta_out):
     os.makedirs(pasta_out, exist_ok=True)
-    pasta_3mf = os.path.join(RAIZ, "slicer", "prusaslicer")
+    pasta_3mf = os.path.join(SAIDA, "slicer", "prusaslicer")
     os.makedirs(pasta_3mf, exist_ok=True)
     mf = os.path.join(pasta_3mf, f"{nome}.3mf")
     montar_3mf(mf, posicoes)
@@ -260,15 +260,15 @@ def fatiar(nome, posicoes, pasta_out):
         print(r.stdout[-3000:], r.stderr[-3000:])
         raise SystemExit("PrusaSlicer falhou")
     trocas, purgado_mm = pos_processar(gc)
-    cartao_png = os.path.join(RAIZ, "previews", "vista-topo-recortada.png")
+    cartao_png = os.path.join(SAIDA, "previews", "vista-topo-recortada.png")
     if os.path.exists(cartao_png):
         miniaturas(gc, posicoes, cartao_png)
     return mf, gc, trocas, purgado_mm
 
 
 if __name__ == "__main__":
-    pasta = os.path.join(RAIZ, "gcode")
-    for nome, pos in [("cartao-mavisky-1x-qidi-plus4-box", [(BED / 2, BED / 2)]),
-                      ("cartao-mavisky-12x-qidi-plus4-box", grelha(3, 4))]:
+    pasta = os.path.join(SAIDA, "gcode")
+    for nome, pos in [(f"{prefixo()}-1x-qidi-plus4-box", [(BED / 2, BED / 2)]),
+                      (f"{prefixo()}-12x-qidi-plus4-box", grelha(3, 4))]:
         mf, gc, trocas, purgado = fatiar(nome, pos, pasta)
         print(nome, "| trocas:", trocas, "| purga ~", round(purgado * FIL_AREA * 1.24 / 1000, 2), "g")

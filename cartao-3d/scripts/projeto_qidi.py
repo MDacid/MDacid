@@ -19,7 +19,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fatiar import BED, PARTES, PURGA, STL, grelha  # noqa: E402
-from geometria import CARD_H, CARD_W, RAIZ  # noqa: E402
+from geometria import CARD_H, CARD_W, RAIZ, SAIDA, prefixo  # noqa: E402
 
 PERFIS = os.path.join(RAIZ, "slicer", "perfis-qidi-oficiais")
 VERSAO = "02.07.02.73"
@@ -115,8 +115,7 @@ def gerar(caminho, posicoes, miniatura_png):
     principal = (f'<?xml version="1.0" encoding="UTF-8"?>\n<model unit="millimeter" xml:lang="en-US" {ns}>\n'
                  f' <metadata name="Application">QIDIStudio-{VERSAO}</metadata>\n'
                  ' <metadata name="QIDIStudio:3mfVersion">1</metadata>\n'
-                 ' <metadata name="Title">Cartao MAVISKY 3 cores</metadata>\n'
-                 ' <metadata name="Designer">MAVISKY</metadata>\n'
+                 f' <metadata name="Title">{prefixo()} 3 cores</metadata>\n'
                  ' <resources>\n'
                  f'  <object id="{obj_id}" p:UUID="00000001-61cb-4c03-9d28-80fed5dfa1dc" type="model">\n'
                  f'   <components>\n{comps}   </components>\n  </object>\n'
@@ -142,7 +141,7 @@ def gerar(caminho, posicoes, miniatura_png):
     face_total = sum(len(m.faces) for _, m, _ in malhas)
     model_settings = ('<?xml version="1.0" encoding="UTF-8"?>\n<config>\n'
                       f'  <object id="{obj_id}">\n'
-                      '    <metadata key="name" value="cartao-mavisky"/>\n'
+                      f'    <metadata key="name" value="{prefixo()}"/>\n'
                       '    <metadata key="extruder" value="1"/>\n'
                       f'    <metadata face_count="{face_total}"/>\n'
                       f'{partes}  </object>\n'
@@ -194,10 +193,10 @@ def gerar(caminho, posicoes, miniatura_png):
 
 
 if __name__ == "__main__":
-    pasta = os.path.join(RAIZ, "qidi-studio")
+    pasta = os.path.join(SAIDA, "qidi-studio")
     os.makedirs(pasta, exist_ok=True)
-    mini = os.path.join(RAIZ, "previews", "vista-topo-recortada.png")
-    for nome, pos in [("cartao-mavisky-1x-QIDIStudio.3mf", [(BED / 2, BED / 2)]),
-                      ("cartao-mavisky-12x-QIDIStudio.3mf", grelha(3, 4))]:
+    mini = os.path.join(SAIDA, "previews", "vista-topo-recortada.png")
+    for nome, pos in [(f"{prefixo()}-1x-QIDIStudio.3mf", [(BED / 2, BED / 2)]),
+                      (f"{prefixo()}-12x-QIDIStudio.3mf", grelha(3, 4))]:
         gerar(os.path.join(pasta, nome), pos, mini)
         print(os.path.join(pasta, nome))
