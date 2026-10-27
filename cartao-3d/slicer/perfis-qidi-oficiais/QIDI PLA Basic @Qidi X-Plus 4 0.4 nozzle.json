@@ -1,0 +1,10 @@
+{
+    "type": "filament",
+    "setting_id": "QFSA00_30",
+    "name": "QIDI PLA Basic @Qidi X-Plus 4 0.4 nozzle",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "QIDI PLA Basic@X4",
+    "pressure_advance": ["0.038"],
+	"compatible_printers": ["X-Plus 4 0.4 nozzle"]
+}

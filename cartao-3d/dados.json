@@ -1,0 +1,10 @@
+{
+  "_nota": "Editar estes campos e correr: python3 scripts/gerar_tudo.py",
+  "nome": "Nome Apelido",
+  "funcao": "PILOTO DE DRONE",
+  "telefone": "+351 9XX XXX XXX",
+  "email": "geral@mavisky.pt",
+  "site": "www.mavisky.pt",
+  "instagram": "@mavisky",
+  "tagline": "FILMAGENS AÉREAS & FPV"
+}
