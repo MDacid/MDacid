@@ -33,6 +33,9 @@ ALTERACOES_PROCESSO = {
     "wall_generator": "arachne",
     "min_feature_size": "10%",       # afinado por medição para o texto pequeno
     "min_bead_width": "60%",
+    "outer_wall_speed": ["100"],     # contornos das letras mais nítidos
+    "top_surface_speed": ["120"],    # topo mais liso
+    "top_surface_acceleration": ["1500"],
 }
 META = {"name", "inherits", "from", "instantiation", "setting_id", "type", "compatible_printers",
         "compatible_printers_condition", "compatible_prints", "compatible_prints_condition",

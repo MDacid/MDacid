@@ -15,7 +15,7 @@ Este cartão foi desenhado em **degraus, com uma só cor por camada**:
 |---|---|---|---|
 | 1–3 | 0,0–0,6 mm | preto (base, cartão inteiro) | 1 |
 | 4–5 | 0,6–1,0 mm | cobre (elementos cobre + base dos brancos) | 2 |
-| 6–7 | 1,0–1,4 mm | branco (letras e M brancos) | 3 |
+| 6–8 | 1,0–1,6 mm | branco (letras e M brancos), 3 camadas para ficar bem opaco | 3 |
 
 Resultado:
 
@@ -28,11 +28,21 @@ Resultado:
 
 | G-code | preto | cobre | branco | **total** | tempo* |
 |---|---|---|---|---|---|
-| 1 cartão | 3,46 g | 0,62 g | 0,64 g | **4,7 g** | ~11 min |
-| 12 cartões (3×4) | 41,1 g | 2,9 g | 2,1 g | **46,1 g = 3,8 g/cartão** | ~2 h 13 |
+| 1 cartão | 3,46 g | 0,60 g | 0,68 g | **4,75 g** | ~13 min |
+| 12 cartões (3×4) | 41,1 g | 2,7 g | 2,6 g | **46,4 g = 3,9 g/cartão** | ~2 h 27 |
 
 \* estimativa do fatiador, sem contar as 2 trocas (~2–3 min cada).
 **A placa de 12 é a mais económica**: as 2 purgas são divididas por 12 cartões.
+
+## Qualidade sem gastar mais
+
+- **Branco com 3 camadas** (0,6 mm): opaco sobre o cobre, sem tom alaranjado. A 1.ª camada
+  branca, que pode levar um resto de cobre da troca, fica tapada por duas camadas limpas.
+  Por isso a purga pode ser baixa (custa só ~0,07 g por cartão).
+- **Contornos e topo mais lentos** (parede exterior 100 mm/s, topo 120 mm/s a 1500 mm/s²):
+  letras com arestas nítidas e topo liso.
+- **Arachne afinado** para o texto pequeno (pontos, "@", "t", "+").
+- Texto em Montserrat Bold ≥ 2,2 mm e traços ≥ 0,45 mm (ver "Regras de desenho" abaixo).
 
 ## Ficheiros
 
@@ -45,7 +55,7 @@ Resultado:
 | `fusion360/cartao-mavisky-3cores.step` | **Fusion 360**: 3 corpos sólidos coloridos |
 | `fusion360/cartao-mavisky-camadas.dxf` | **Fusion 360**: contornos 2D editáveis, 1 layer por cor |
 | `stl/cartao-mavisky-{1-base-preto,2-cobre,3-branco}.stl` | malhas por cor (para qualquer fatiador) |
-| `dados.json` | nome, função e contactos (Mauro Dinis, telefone, email, TikTok) |
+| `dados.json` | função e contactos (telefone, email, TikTok); o nome está vazio de propósito |
 | `previews/` | vista de cima e simulação do G-code |
 | `slicer/` | configuração usada, perfis oficiais QIDI, projetos PrusaSlicer |
 | `scripts/` | gerador completo (geometria → STEP/STL/DXF → G-code → projeto QIDI) |
@@ -88,7 +98,7 @@ desligar a *torre de purga*.
   renders, ou juntar a outros modelos.
 - **DXF** (`Inserir → Inserir DXF`): contornos de cada cor em layers separadas
   (`1_BASE_PRETO`, `2_COBRE`, `3_BRANCO`). Para alterar o desenho:
-  extrudir a base 0,6 mm, os contornos cobre de 0,6 a 1,0 mm e os brancos de 1,0 a 1,4 mm.
+  extrudir a base 0,6 mm, os contornos cobre de 0,6 a 1,0 mm e os brancos de 1,0 a 1,6 mm.
 - Para mudar só o texto (nome, telefone…) é mais rápido usar o gerador (abaixo),
   que já aplica as regras de legibilidade.
 

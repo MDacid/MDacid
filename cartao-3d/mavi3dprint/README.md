@@ -11,8 +11,8 @@ O logótipo foi **redesenhado em vetor** a partir do banner da marca, com engren
 
 | G-code | preto | cobre | branco | **total** | tempo* |
 |---|---|---|---|---|---|
-| 1 cartão | 3,46 g | 0,73 g | 0,68 g | **4,9 g** | ~11 min |
-| 12 cartões (3×4) | 41,1 g | 4,3 g | 2,6 g | **48,0 g = 4,0 g/cartão** | ~2 h 07 |
+| 1 cartão | 3,46 g | 0,73 g | 0,77 g | **5,0 g** | ~13 min |
+| 12 cartões (3×4) | 41,1 g | 4,3 g | 3,6 g | **49,0 g = 4,1 g/cartão** | ~2 h 25 |
 
 \* sem as 2 trocas da Box (~2–3 min cada).
 

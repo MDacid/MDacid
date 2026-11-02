@@ -408,17 +408,39 @@ def construir(dados_path=None):
     # --- divisória ----------------------------------------------------------
     cobre.append(LineString([(X_DIV, Y0 + 2.0), (X_DIV, Y1 - 2.0)]).buffer(0.32, cap_style=1))
 
-    # --- bloco de contactos -------------------------------------------------
-    altura = CAP_NOME + 2.3 + CAP_FUNCAO + ((4.4 + (len(coluna) - 1) * PASSO + ICON / 2) if coluna else 0)
-    y = YC + altura / 2 - CAP_NOME
-    nome, w = texto(dados["nome"], "Bold", CAP_NOME, tracking=0.01)
-    nome, _ = _ajustar(nome, w, larg_max, "nome")
-    branco.append(colocar(nome, X_TXT, y))
-    y -= 2.3 + CAP_FUNCAO
-    funcao, w = texto(dados["funcao"].replace("·", "•"), "Bold", CAP_FUNCAO, tracking=0.08)
-    funcao, _ = _ajustar(funcao, w, larg_max, "funcao")
-    cobre.append(colocar(funcao, X_TXT, y))
-    y -= 4.4 + ICON / 2 - CAP_FUNCAO / 2
+    # --- bloco de contactos (nome e função opcionais) ------------------------
+    tem_nome = bool(dados.get("nome"))
+    funcao_txt = (dados.get("funcao") or "").replace("·", "•")
+    cap_f = CAP_FUNCAO
+    if funcao_txt and not tem_nome:
+        # sem nome, a função faz de título: maior, até 2.8 mm se couber
+        _, w = texto(funcao_txt, "Bold", CAP_FUNCAO, tracking=0.08)
+        cap_f = max(CAP_FUNCAO, min(2.8, CAP_FUNCAO * larg_max / w))
+    blocos = []
+    if tem_nome:
+        blocos.append(("nome", CAP_NOME, 2.3))
+    if funcao_txt:
+        blocos.append(("funcao", cap_f, 2.3))
+    altura = sum(c + g for _, c, g in blocos) - (blocos[-1][2] if blocos else 0)
+    if coluna:
+        altura += 4.4 + (len(coluna) - 1) * PASSO + ICON / 2
+    y = YC + altura / 2
+    for tipo, cap, gap in blocos:
+        y -= cap
+        if tipo == "nome":
+            t, w = texto(dados["nome"], "Bold", cap, tracking=0.01)
+            t, _ = _ajustar(t, w, larg_max, "nome")
+            branco.append(colocar(t, X_TXT, y))
+        else:
+            t, w = texto(funcao_txt, "Bold", cap, tracking=0.08)
+            t, _ = _ajustar(t, w, larg_max, "funcao")
+            cobre.append(colocar(t, X_TXT, y))
+        y -= gap
+    if blocos:
+        y += blocos[-1][2]                          # y = linha de base do último bloco
+        y -= 4.4 + ICON / 2 - cap_f / 2
+    else:
+        y = YC + altura / 2 - ICON / 2
     for ic, b, c, w in coluna:
         cobre.append(affinity.translate(_icone(ic, ICON), X_TXT + ICON / 2, y))
         for geo, lista in ((b, branco), (c, cobre)):

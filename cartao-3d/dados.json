@@ -1,6 +1,6 @@
 {
   "_nota": "Editar estes campos e correr: python3 scripts/gerar_tudo.py (campos de contacto vazios ou ausentes não aparecem; disponíveis: telefone, email, site, instagram, tiktok)",
-  "nome": "Mauro Dinis",
+  "nome": "",
   "funcao": "PILOTO DE DRONE",
   "telefone": "+351 920 065 394",
   "email": "mavisky.fpv@gmail.com",
