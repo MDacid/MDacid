@@ -360,7 +360,8 @@ def construir(dados_path=None):
     # em vez de encolherem abaixo do tamanho imprimível (coluna avaliada com o logo na largura máxima)
     larg_col = CARD_W - 3.4 - (4.0 + LARG_LOGO + 5.8)
     coluna, faixa = [], []
-    for k in ("telefone", "email", "site", "instagram", "tiktok"):
+    ordem = dados.get("ordem_contactos") or ["telefone", "email", "site", "instagram", "tiktok"]
+    for k in ordem:
         if not dados.get(k):
             continue
         b, c, w = texto_partes(dados[k], "Bold", CAP_C, tracking=0.02)
