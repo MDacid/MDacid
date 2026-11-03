@@ -1,9 +1,12 @@
 {
-  "_nota": "Editar estes campos e correr: python3 scripts/gerar_tudo.py (campos de contacto vazios ou ausentes não aparecem; disponíveis: telefone, email, site, instagram, tiktok)",
+  "_nota": "Editar estes campos e correr: python3 scripts/gerar_tudo.py (campos de contacto vazios ou ausentes não aparecem; disponíveis: telefone, email, site, instagram, tiktok) Tamanhos: cap_contactos/cap_tagline = altura das maiúsculas em mm (≥3.0 para contactos ficarem nítidos com bico 0.4).",
   "nome": "",
   "funcao": "PILOTO DE DRONE",
   "telefone": "+351 920 065 394",
   "email": "mavisky.fpv@gmail.com",
   "tiktok": "@mavisky1",
-  "tagline": "FILMAGENS AÉREAS & FPV"
+  "tagline": "FILMAGENS AÉREAS & FPV",
+  "cap_contactos": 3.0,
+  "cap_tagline": 2.6,
+  "peso_arroba": "ExtraBold"
 }

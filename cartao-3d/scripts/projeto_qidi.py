@@ -37,6 +37,11 @@ ALTERACOES_PROCESSO = {
     "top_surface_speed": ["120"],    # topo mais liso
     "top_surface_acceleration": ["1500"],
 }
+ALTERACOES_FILAMENTO = {
+    "nozzle_temperature": ["205"] * 3,            # 1.ª camada continua a 210
+    "filament_retraction_length": ["1"] * 3,     # menos fios entre letras pequenas
+    "filament_retraction_speed": ["40"] * 3,
+}
 META = {"name", "inherits", "from", "instantiation", "setting_id", "type", "compatible_printers",
         "compatible_printers_condition", "compatible_prints", "compatible_prints_condition",
         "filament_id", "printer_settings_id", "is_custom_defined", "description"}
@@ -59,6 +64,7 @@ def project_settings():
     for k, v in filamento.items():
         cfg[k] = (v * 3) if isinstance(v, list) and len(v) == 1 else v
     cfg.update(ALTERACOES_PROCESSO)
+    cfg.update(ALTERACOES_FILAMENTO)
     matriz = []
     for a in range(3):
         for b in range(3):
@@ -71,7 +77,7 @@ def project_settings():
         "print_settings_id": PROCESS,
         "filament_settings_id": [FILAMENT] * 3,
         "inherits_group": ["", "", "", "", ""],
-        "different_settings_to_system": [";".join(sorted(ALTERACOES_PROCESSO)), "", "", "", ""],
+        "different_settings_to_system": [";".join(sorted(ALTERACOES_PROCESSO))] + [";".join(sorted(ALTERACOES_FILAMENTO))] * 3 + [""],
         "filament_colour": CORES,
         "filament_map": ["1", "1", "1"],
         "flush_volumes_matrix": matriz,

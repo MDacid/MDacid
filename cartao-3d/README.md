@@ -28,8 +28,8 @@ Resultado:
 
 | G-code | preto | cobre | branco | **total** | tempo* |
 |---|---|---|---|---|---|
-| 1 cartão | 3,46 g | 0,60 g | 0,68 g | **4,75 g** | ~13 min |
-| 12 cartões (3×4) | 41,1 g | 2,7 g | 2,6 g | **46,4 g = 3,9 g/cartão** | ~2 h 27 |
+| 1 cartão | 3,46 g | 0,64 g | 0,74 g | **4,84 g** | ~13 min |
+| 12 cartões (3×4) | 41,1 g | 3,2 g | 3,3 g | **47,6 g = 4,0 g/cartão** | ~2 h 33 |
 
 \* estimativa do fatiador, sem contar as 2 trocas (~2–3 min cada).
 **A placa de 12 é a mais económica**: as 2 purgas são divididas por 12 cartões.
@@ -42,6 +42,10 @@ Resultado:
 - **Contornos e topo mais lentos** (parede exterior 100 mm/s, topo 120 mm/s a 1500 mm/s²):
   letras com arestas nítidas e topo liso.
 - **Arachne afinado** para o texto pequeno (pontos, "@", "t", "+").
+- **Contactos com maiúsculas de 3,0 mm** (`cap_contactos` no `dados.json`). O primeiro teste,
+  com 2,2 mm, saiu com letras empastadas: os buracos do "a", "e" e "@" fechavam.
+- **Contra fios e empastamento:** bico a 205 °C a partir da 2.ª camada (a 1.ª fica a 210 °C)
+  e retração de 1,0 mm a 40 mm/s (o perfil QIDI usa 0,8 mm a 30 mm/s).
 - Texto em Montserrat Bold ≥ 2,2 mm e traços ≥ 0,45 mm (ver "Regras de desenho" abaixo).
 
 ## Ficheiros

@@ -349,7 +349,13 @@ def construir(dados_path=None):
         logo_c = unary_union([sky, _drone_cobre(eixo)]).difference(m_letra)  # M por cima dos braços
     bx0, by0, bx1, by1 = unary_union([logo_b, logo_c]).bounds
 
-    CAP_NOME, CAP_C, ICON, GAP_I, PASSO = 3.0, 2.2, 3.3, 1.1, 5.0
+    # tamanhos configuráveis no dados.json (cap_* = altura das maiúsculas em mm)
+    CAP_C = float(dados.get("cap_contactos", 2.2))
+    cap_tag = float(dados.get("cap_tagline", CAP_TAG))
+    PESO_ESPECIAL["@"] = dados.get("peso_arroba", "Black")
+    CAP_NOME, GAP_I = 3.0, 1.1
+    ICON = max(3.3, CAP_C * 1.45)
+    PASSO = max(5.0, CAP_C + 2.8)
     # contactos: os que não cabem na coluna passam para uma faixa na largura toda,
     # em vez de encolherem abaixo do tamanho imprimível (coluna avaliada com o logo na largura máxima)
     larg_col = CARD_W - 3.4 - (4.0 + LARG_LOGO + 5.8)
@@ -363,9 +369,9 @@ def construir(dados_path=None):
     # --- linhas verticais (Y) --------------------------------------------
     tem_tag = bool(dados.get("tagline"))
     Y_RODAPE = 4.6                          # linha de base da tagline
-    PASSO_FAIXA = 5.6
-    base_faixa = (Y_RODAPE + CAP_TAG + 3.6) if tem_tag else 4.8
-    Y0 = (10.0 if tem_tag else 4.6) + PASSO_FAIXA * len(faixa)
+    PASSO_FAIXA = max(5.6, CAP_C + 3.4)
+    base_faixa = (Y_RODAPE + cap_tag + 3.6) if tem_tag else 4.8
+    Y0 = (Y_RODAPE + cap_tag + 3.1 if tem_tag else 4.6) + PASSO_FAIXA * len(faixa)
     Y1 = CARD_H - 4.0
     YC = (Y0 + Y1) / 2
 
@@ -388,7 +394,7 @@ def construir(dados_path=None):
 
     # --- rodapé: tagline em toda a largura -------------------------------
     if tem_tag:
-        tag, tag_w = texto(dados["tagline"], "Bold", CAP_TAG, tracking=0.16)
+        tag, tag_w = texto(dados["tagline"], "Bold", cap_tag, tracking=0.16)
         tag, k = _ajustar(tag, tag_w, CARD_W - 8.0, "tagline")
         branco.append(colocar(tag, CARD_W / 2, Y_RODAPE, "centro", tag_w * k))
 
