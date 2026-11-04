@@ -18,5 +18,8 @@
   ],
   "peso_funcao": "ExtraBold",
   "cap_funcao_max": 3.2,
-  "site": "[WWW.MAVISKY.PT]"
+  "site": "[WWW.MAVISKY.PT]",
+  "sem_icone": [
+    "site"
+  ]
 }

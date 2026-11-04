@@ -400,17 +400,20 @@ def construir(dados_path=None):
         branco.append(colocar(tag, CARD_W / 2, Y_RODAPE, "centro", tag_w * k))
 
     # --- faixa de contactos largos (centrados) ---------------------------
+    sem_icone = set(dados.get("sem_icone", []))   # contactos sem ícone (ex.: ["site"])
     for n, (ic, b, c, w) in enumerate(faixa):
-        k = min(1.0, (CARD_W - 8.0 - ICON - GAP_I) / w)
+        esp_ic = 0.0 if ic in sem_icone else ICON + GAP_I
+        k = min(1.0, (CARD_W - 8.0 - esp_ic) / w)
         if k < 0.97:
             print(f"  aviso: '{ic}' encolhido para {k:.0%} para caber — encurte o texto", file=sys.stderr)
-        larg = ICON + GAP_I + w * k
+        larg = esp_ic + w * k
         x0 = CARD_W / 2 - larg / 2
         yc = base_faixa + n * PASSO_FAIXA + CAP_C / 2
-        cobre.append(affinity.translate(_icone(ic, ICON), x0 + ICON / 2, yc))
+        if esp_ic:
+            cobre.append(affinity.translate(_icone(ic, ICON), x0 + ICON / 2, yc))
         for geo, lista in ((b, branco), (c, cobre)):
             if not geo.is_empty:
-                lista.append(colocar(affinity.scale(geo, k, k, origin=(0, 0)), x0 + ICON + GAP_I, yc - CAP_C * k / 2))
+                lista.append(colocar(affinity.scale(geo, k, k, origin=(0, 0)), x0 + esp_ic, yc - CAP_C * k / 2))
 
     # --- divisória ----------------------------------------------------------
     cobre.append(LineString([(X_DIV, Y0 + 2.0), (X_DIV, Y1 - 2.0)]).buffer(0.32, cap_style=1))
@@ -452,10 +455,12 @@ def construir(dados_path=None):
     else:
         y = YC + altura / 2 - ICON / 2
     for ic, b, c, w in coluna:
-        cobre.append(affinity.translate(_icone(ic, ICON), X_TXT + ICON / 2, y))
+        esp_ic = 0.0 if ic in sem_icone else ICON + GAP_I
+        if esp_ic:
+            cobre.append(affinity.translate(_icone(ic, ICON), X_TXT + ICON / 2, y))
         for geo, lista in ((b, branco), (c, cobre)):
             if not geo.is_empty:
-                lista.append(colocar(geo, X_TXT + ICON + GAP_I, y - CAP_C / 2))
+                lista.append(colocar(geo, X_TXT + esp_ic, y - CAP_C / 2))
         y -= PASSO
 
     base = rounded_rect(0, 0, CARD_W, CARD_H, CARD_R)
