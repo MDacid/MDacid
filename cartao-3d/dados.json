@@ -1,7 +1,7 @@
 {
   "_nota": "Editar estes campos e correr: python3 scripts/gerar_tudo.py (campos de contacto vazios ou ausentes não aparecem; disponíveis: telefone, email, site, instagram, tiktok) Tamanhos: cap_contactos/cap_tagline = altura das maiúsculas em mm (≥3.0 para contactos ficarem nítidos com bico 0.4). \"ordem_contactos\" define a ordem (de cima para baixo na coluna).",
   "nome": "",
-  "funcao": "PILOTO DE DRONE",
+  "funcao": "PILOTO\nDE DRONE",
   "telefone": "920 065 394",
   "email": "mavisky.fpv@gmail.com",
   "tiktok": "@mavisky1",
@@ -15,5 +15,7 @@
     "email",
     "site",
     "instagram"
-  ]
+  ],
+  "peso_funcao": "ExtraBold",
+  "cap_funcao_max": 3.2
 }

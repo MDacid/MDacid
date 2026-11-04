@@ -2,8 +2,9 @@
 
 Camadas (uma só cor por camada => apenas 2 trocas de filamento por impressão):
   z 0.0 – 0.6  base preta (cartão inteiro)
-  z 0.6 – 1.0  cobre: elementos cobre + por baixo dos brancos
-  z 1.0 – 1.6  branco: elementos brancos (3 camadas: opaco sobre o cobre)
+  z 0.6 – 1.2  cobre: elementos cobre + por baixo dos brancos (3 camadas: a 1.ª, com resto
+               de preto da troca, fica tapada por duas limpas)
+  z 1.2 – 1.8  branco: elementos brancos (3 camadas: opaco sobre o cobre)
 """
 import math
 import os
@@ -16,7 +17,7 @@ import trimesh
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from geometria import SAIDA, as_polys, construir, prefixo  # noqa: E402
 
-Z_BASE, Z_COBRE, Z_BRANCO = 0.6, 1.0, 1.6
+Z_BASE, Z_COBRE, Z_BRANCO = 0.6, 1.2, 1.8
 
 CORPOS = [  # nome, filamento (slot da Box), cor RGB, z0, z1
     ("1-base-preto", 1, (0.08, 0.09, 0.10), 0.0, Z_BASE),

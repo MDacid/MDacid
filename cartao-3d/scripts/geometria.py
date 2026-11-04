@@ -234,7 +234,7 @@ def _font(peso):
 
 PESO_ESPECIAL = {"@": "Black"}  # o @ da Montserrat tem traços muito finos
 # glifos com braços curtos que o fatiador perde com bico 0.4: engrossar (mm por lado)
-ENGROSSAR_GLIFO = {"t": 0.08, "+": 0.09, "f": 0.05}
+ENGROSSAR_GLIFO = {"t": 0.08, "+": 0.09, "f": 0.05, "G": 0.06}
 
 
 def texto(s, peso, altura_maiusc, tracking=0.0):
@@ -419,27 +419,30 @@ def construir(dados_path=None):
     tem_nome = bool(dados.get("nome"))
     funcao_txt = (dados.get("funcao") or "").replace("·", "•")
     cap_f = CAP_FUNCAO
-    if funcao_txt and not tem_nome:
-        # sem nome, a função faz de título: maior, até 2.8 mm se couber
-        _, w = texto(funcao_txt, "Bold", CAP_FUNCAO, tracking=0.08)
-        cap_f = max(CAP_FUNCAO, min(2.8, CAP_FUNCAO * larg_max / w))
+    peso_f = dados.get("peso_funcao", "Bold")          # ExtraBold = traços mais grossos
+    cap_f_max = float(dados.get("cap_funcao_max", 2.8))
+    linhas_f = [l for l in funcao_txt.split("\n") if l.strip()]   # "\n" no dados.json = mudança de linha
+    if linhas_f and not tem_nome:
+        # sem nome, a função faz de título: maior, até cap_funcao_max se couber
+        w = max(texto(l, peso_f, CAP_FUNCAO, tracking=0.08)[1] for l in linhas_f)
+        cap_f = max(CAP_FUNCAO, min(cap_f_max, CAP_FUNCAO * larg_max / w))
     blocos = []
     if tem_nome:
-        blocos.append(("nome", CAP_NOME, 2.3))
-    if funcao_txt:
-        blocos.append(("funcao", cap_f, 2.3))
-    altura = sum(c + g for _, c, g in blocos) - (blocos[-1][2] if blocos else 0)
+        blocos.append(("nome", CAP_NOME, 2.3, dados["nome"]))
+    for i, l in enumerate(linhas_f):
+        blocos.append(("funcao", cap_f, 2.3 if i == len(linhas_f) - 1 else cap_f * 0.55, l))
+    altura = sum(c + g for _, c, g, _ in blocos) - (blocos[-1][2] if blocos else 0)
     if coluna:
         altura += 4.4 + (len(coluna) - 1) * PASSO + ICON / 2
     y = YC + altura / 2
-    for tipo, cap, gap in blocos:
+    for tipo, cap, gap, txt in blocos:
         y -= cap
         if tipo == "nome":
-            t, w = texto(dados["nome"], "Bold", cap, tracking=0.01)
+            t, w = texto(txt, "Bold", cap, tracking=0.01)
             t, _ = _ajustar(t, w, larg_max, "nome")
             branco.append(colocar(t, X_TXT, y))
         else:
-            t, w = texto(funcao_txt, "Bold", cap, tracking=0.08)
+            t, w = texto(txt, peso_f, cap, tracking=0.08)
             t, _ = _ajustar(t, w, larg_max, "funcao")
             cobre.append(colocar(t, X_TXT, y))
         y -= gap

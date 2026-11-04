@@ -14,8 +14,8 @@ Este cartão foi desenhado em **degraus, com uma só cor por camada**:
 | camadas (0,2 mm) | altura | cor | slot da Box |
 |---|---|---|---|
 | 1–3 | 0,0–0,6 mm | preto (base, cartão inteiro) | 1 |
-| 4–5 | 0,6–1,0 mm | cobre (elementos cobre + base dos brancos) | 2 |
-| 6–8 | 1,0–1,6 mm | branco (letras e M brancos), 3 camadas para ficar bem opaco | 3 |
+| 4–6 | 0,6–1,2 mm | cobre (elementos cobre + base dos brancos), 3 camadas | 2 |
+| 7–9 | 1,2–1,8 mm | branco (letras e M brancos), 3 camadas | 3 |
 
 Resultado:
 
@@ -28,20 +28,22 @@ Resultado:
 
 | G-code | preto | cobre | branco | **total** | tempo* |
 |---|---|---|---|---|---|
-| 1 cartão | 3,46 g | 0,64 g | 0,74 g | **4,84 g** | ~13 min |
-| 12 cartões (3×4) | 41,1 g | 3,2 g | 3,3 g | **47,6 g = 4,0 g/cartão** | ~2 h 33 |
+| 1 cartão | 3,46 g | 0,78 g | 0,73 g | **4,98 g** | ~14 min |
+| 12 cartões (3×4) | 41,1 g | 4,9 g | 3,2 g | **49,2 g = 4,1 g/cartão** | ~2 h 48 |
 
 \* estimativa do fatiador, sem contar as 2 trocas (~2–3 min cada).
 **A placa de 12 é a mais económica**: as 2 purgas são divididas por 12 cartões.
 
 ## Qualidade sem gastar mais
 
-- **Branco com 3 camadas** (0,6 mm): opaco sobre o cobre, sem tom alaranjado. A 1.ª camada
-  branca, que pode levar um resto de cobre da troca, fica tapada por duas camadas limpas.
-  Por isso a purga pode ser baixa (custa só ~0,07 g por cartão).
+- **Cobre e branco com 3 camadas cada** (0,6 mm): a 1.ª camada de cada cor, que pode levar um
+  resto da cor anterior da troca, fica tapada por duas camadas limpas, por isso a purga pode ser
+  baixa. O 2.º teste, com o cobre a 2 camadas, mostrou o cobre fino e escuro; com 3 fica cheio.
 - **Contornos e topo mais lentos** (parede exterior 100 mm/s, topo 120 mm/s a 1500 mm/s²):
   letras com arestas nítidas e topo liso.
 - **Arachne afinado** para o texto pequeno (pontos, "@", "t", "+").
+- **Função em 2 linhas ("PILOTO" / "DE DRONE") em ExtraBold de 3,2 mm** (`\n` no campo
+  `funcao`, `peso_funcao`, `cap_funcao_max`): numa linha só cabia a 2,2 mm.
 - **Contactos com maiúsculas de 3,0 mm** (`cap_contactos` no `dados.json`). O primeiro teste,
   com 2,2 mm, saiu com letras empastadas: os buracos do "a", "e" e "@" fechavam.
 - **Contra fios e empastamento:** bico a 205 °C a partir da 2.ª camada (a 1.ª fica a 210 °C)
@@ -102,7 +104,7 @@ desligar a *torre de purga*.
   renders, ou juntar a outros modelos.
 - **DXF** (`Inserir → Inserir DXF`): contornos de cada cor em layers separadas
   (`1_BASE_PRETO`, `2_COBRE`, `3_BRANCO`). Para alterar o desenho:
-  extrudir a base 0,6 mm, os contornos cobre de 0,6 a 1,0 mm e os brancos de 1,0 a 1,6 mm.
+  extrudir a base 0,6 mm, os contornos cobre de 0,6 a 1,2 mm e os brancos de 1,2 a 1,8 mm.
 - Para mudar só o texto (nome, telefone…) é mais rápido usar o gerador (abaixo),
   que já aplica as regras de legibilidade.
 
