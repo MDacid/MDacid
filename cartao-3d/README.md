@@ -28,8 +28,8 @@ Resultado:
 
 | G-code | preto | cobre | branco | **total** | tempo* |
 |---|---|---|---|---|---|
-| 1 cartão | 3,46 g | 0,78 g | 0,73 g | **4,98 g** | ~14 min |
-| 12 cartões (3×4) | 41,1 g | 4,9 g | 3,2 g | **49,2 g = 4,1 g/cartão** | ~2 h 48 |
+| 1 cartão | 3,46 g | 0,83 g | 0,73 g | **5,0 g** | ~15 min |
+| 12 cartões (3×4) | 41,1 g | 5,4 g | 3,2 g | **49,8 g = 4,1 g/cartão** | ~2 h 55 |
 
 \* estimativa do fatiador, sem contar as 2 trocas (~2–3 min cada).
 **A placa de 12 é a mais económica**: as 2 purgas são divididas por 12 cartões.
@@ -61,7 +61,7 @@ Resultado:
 | `fusion360/cartao-mavisky-3cores.step` | **Fusion 360**: 3 corpos sólidos coloridos |
 | `fusion360/cartao-mavisky-camadas.dxf` | **Fusion 360**: contornos 2D editáveis, 1 layer por cor |
 | `stl/cartao-mavisky-{1-base-preto,2-cobre,3-branco}.stl` | malhas por cor (para qualquer fatiador) |
-| `dados.json` | função e contactos (telefone, email, TikTok); o nome está vazio de propósito |
+| `dados.json` | função e contactos (TikTok, telefone, site, email); o nome está vazio de propósito. Texto entre `[ ]` sai a cobre/dourado |
 | `previews/` | vista de cima e simulação do G-code |
 | `slicer/` | configuração usada, perfis oficiais QIDI, projetos PrusaSlicer |
 | `scripts/` | gerador completo (geometria → STEP/STL/DXF → G-code → projeto QIDI) |
