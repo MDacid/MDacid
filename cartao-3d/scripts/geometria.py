@@ -337,7 +337,7 @@ def construir(dados_path=None):
     # --- logótipo em "px" (Y para baixo) ---------------------------------
     if marca == "mavi3dprint":
         from logo_mavi3d import desenhar
-        logo_b, logo_c = desenhar()
+        logo_b, logo_c = desenhar(p3d=True)          # versão otimizada para o bico 0,4
     else:
         branco_m, cobre_m = _mascaras()
         m_letra = _tracar(branco_m, (320, 720), (95, 395))
